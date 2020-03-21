@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">S01-Coffee-Order-Calc</string>
+    <string name="quantity">Quantity: </string>
+    <string name="numberOfCoffee">10</string>
+    <string name="order">Order</string>
+    <string name="padding8">8dp</string>
+    <string name="padding16">16dp</string>
+    <string name="margin8">8dp</string>
+    <string name="margin16">16dp</string>
+</resources>

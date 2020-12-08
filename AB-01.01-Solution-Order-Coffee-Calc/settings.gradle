@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name='S01-Coffee-Order-Calc'

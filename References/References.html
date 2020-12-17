@@ -1,68 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>References</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
-<title>Overview slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/theme/simple.css" id="theme">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-</script>
-
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML-full,Safe"> </script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    init_mathjax = function() {
-        if (window.MathJax) {
-        // MathJax loaded
-            MathJax.Hub.Config({
-                TeX: {
-                    equationNumbers: {
-                    autoNumber: "AMS",
-                    useLabelIds: true
-                    }
-                },
-                tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                    processEscapes: true,
-                    processEnvironments: true
-                },
-                displayAlign: 'center',
-                CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
-                    }
-                },
-                "HTML-CSS": {
-                    linebreaks: { 
-                    automatic: true 
-                    }
-                }
-            });
-        
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-        }
-    }
-    init_mathjax();
-    </script>
-    <!-- End of mathjax configuration -->
 
 <style type="text/css">
     pre { line-height: 125%; margin: 0; }
@@ -14253,15 +14197,16 @@ a.anchor-link {
 .highlight  {
     margin: 0.4em;
 }
-.jp-Notebook {
-    padding: 0;
+
+/* Input area styling */
+.jp-InputArea {
+    overflow: hidden;
 }
-:root {
-    --jp-ui-font-size1: 20px;       /* instead of 14px */
-    --jp-content-font-size1: 20px;  /* instead of 14px */
-    --jp-code-font-size: 19px;      /* instead of 13px */
-    --jp-cell-prompt-width: 110px;  /* instead of 64px */
+
+.jp-InputArea-editor {
+    overflow: hidden;
 }
+
 @media print {
   body {
     margin: 0;
@@ -14269,364 +14214,82 @@ a.anchor-link {
 }
 </style>
 
-<style type="text/css">
-/* Overrides of notebook CSS for static HTML export */
-.reveal {
-  font-size: 160%;
-}
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal pre code {
-  padding: 0px;
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
 
-div.jp-InputArea-editor {
-  padding: 0.06em;
-}
 
-div.code_cell {
-  background-color: transparent;
-}
-
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-
-div.jp-OutputPrompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-
-/* Reveal navigation controls */
-
-.reveal .controls .navigate-left,
-.reveal .controls .navigate-left.enabled {
-  border-right-color: #727272;
-}
-.reveal .controls .navigate-left.enabled:hover,
-.reveal .controls .navigate-left.enabled.enabled:hover {
-  border-right-color: #dfdfdf;
-}
-.reveal .controls .navigate-right,
-.reveal .controls .navigate-right.enabled {
-  border-left-color: #727272;
-}
-.reveal .controls .navigate-right.enabled:hover,
-.reveal .controls .navigate-right.enabled.enabled:hover {
-  border-left-color: #dfdfdf;
-}
-.reveal .controls .navigate-up,
-.reveal .controls .navigate-up.enabled {
-  border-bottom-color: #727272;
-}
-.reveal .controls .navigate-up.enabled:hover,
-.reveal .controls .navigate-up.enabled.enabled:hover {
-  border-bottom-color: #dfdfdf;
-}
-.reveal .controls .navigate-down,
-.reveal .controls .navigate-down.enabled {
-  border-top-color: #727272;
-}
-.reveal .controls .navigate-down.enabled:hover,
-.reveal .controls .navigate-down.enabled.enabled:hover {
-  border-top-color: #dfdfdf;
-}
-.reveal .progress span {
-  background: #727272;
-}
-
-/* Scrollbars */
-
-::-webkit-scrollbar
-{
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar *
-{
-  background:transparent;
-}
-::-webkit-scrollbar-thumb
-{
-  background: #727272 !important;
-}
-</style>
-
-</head>
-
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                },
+                "HTML-CSS": {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                }
+            });
+        
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
-<div class="reveal">
-<div class="slides"><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="../assets/logo-dark-limited.png" width="100" height="100" align="right"/></p>
-<h1 id="Android-Developer-Fundamentals">Android Developer Fundamentals<a class="anchor-link" href="#Android-Developer-Fundamentals">&#182;</a></h1><p>In the Android Developer Fundamentals course, you learn basic Android programming concepts and build a variety of apps, using the Java programming language. You start with Hello World and work your way up to apps that schedule jobs, update settings, and use Android Architecture Components.</p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="About-the-course">About the course<a class="anchor-link" href="#About-the-course">&#182;</a></h2><p><strong>The Android Developer Fundamentals course was created by the Google Developers Training team. To take the course, you should have experience with the Java programming language other than you will not get the full benefit</strong>.</p>
-<p>Android Developer Fundamentals prepares you to take the exam for the <a href="https://developers.google.com/certification/associate-android-developer">Associate Android Developer certification</a>.</p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="What-does-the-course-cover?">What does the course cover?<a class="anchor-link" href="#What-does-the-course-cover?">&#182;</a></h3><p>The course includes four teaching units, each of which includes several lessons:</p>
-<ul>
-<li><a href="#get-started">Unit 1: Get started</a></li>
-<li><a href="#user-experience">Unit 2: User experience</a></li>
-<li><a href="#working-in-the-background">Unit 3: Working in the background</a></li>
-<li><a href="#saving-user-data">Unit 4: Saving user data</a></li>
-</ul>
+<p><img src="../assets/logo-dark-limited.png" width="150" height="150" align="right"/></p>
+<h1 id="Android-Fundamentals">Android Fundamentals<a class="anchor-link" href="#Android-Fundamentals">&#182;</a></h1><h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><hr>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<hr>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Unit-1:-Get-started"><a id="get-started">Unit 1: Get started</a><a class="anchor-link" href="#Unit-1:-Get-started">&#182;</a></h3><p>This unit covers installing Android Studio, understanding project structure, building your first app, creating activities, testing your apps, and using the Android Support Library.</p>
-<p>First, you deploy a simple Hello World app. You go on to create an app with a simple activity, and then you create a multi-screen app that passes data between activities. You also learn how to use the Android Support Library to provide backward-compatibility with earlier versions of the Android system for your app.</p>
-
-</div>
-</div></section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li><p><strong>Lesson 1: Build your first app</strong></p>
-<ul>
-<li>1.1: Android Studio and Hello World</li>
-<li>1.2 Part A: Your first interactive UI</li>
-<li>1.2 Part B: The layout editor</li>
-<li>1.3: Text and scrolling views</li>
-<li>1.4: Learn to help yourself</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>Lesson 2: Activities and intents</strong></p>
-<ul>
-<li>2.1: Activities and intents</li>
-<li>2.2: Activity lifecycle and state</li>
-<li>2.3: Implicit intents</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>Lesson 3: Testing, debugging, and using support libraries</strong></p>
-<ul>
-<li>3.1: The debugger</li>
-<li>3.2: Unit tests</li>
-<li>3.3: Support libraries</li>
-</ul>
-</li>
+<li><a href="https://labs.udacity.com/android-visualizer/">Use xml visualizer</a></li>
+<li><a href="https://developers.google.com/android/for-all/vocab-words/?utm_source=udacity&amp;utm_medium=course&amp;utm_campaign=android_basics">Vocab Glossary</a></li>
+<li><a href="https://docs.google.com/document/d/1w1Xn_hnSAODAAtdRDp7haYPBtEwX_l7Htpf8Wpgbu6w/pub?embedded=true">Troubleshooting JDK doc</a></li>
+<li><a href="https://www.oracle.com/java/technologies/javase-downloads.html">Download JDK</a></li>
+<li><a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">Abbreviation of any language from the ISO 639 code list</a></li>
+<li><a href="https://www.materialpalette.com/">Material design color palette</a></li>
+<li><a href="https://material.io/design/typography/#">Type system</a></li>
+<li><a href="https://developer.android.com/about/dashboards/index.html#Platform">Distribute dashboard</a></li>
+<li><a href="https://romannurik.github.io/AndroidAssetStudio/">Android Asset Studio</a></li>
+<li><a href="https://developer.android.com/guide/topics/resources/providing-resources.html">Resource qualifiers</a></li>
+<li><a href="https://color.adobe.com/create">Adobe color</a></li>
+<li><a href="https://google.github.io/android-gradle-dsl/current/">Android Plugin DSL Reference</a></li>
+<li><a href="https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929">Understanding migrations with Room</a></li>
 </ul>
 
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<hr>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Unit-2:-User-experience"><a id="user-experience">Unit 2: User experience</a><a class="anchor-link" href="#Unit-2:-User-experience">&#182;</a></h3><p>This unit covers how to get input from the user, implement navigation strategies, use themes and styles, test your user interface, and follow Material Design principles.</p>
-<p>You create apps that use menus and tabs for navigation, and input controls such as spinners and picker dialogs to get information from the user. You learn how to extract resources to create a style from an instance of a user interface element. You write an app that displays a word list in a recycler view (and you learn why it's better to use a recycler view than a plain scrolling list).</p>
-<p>You also build a score-keeping app to explore Material Design guidelines.</p>
-
-</div>
-</div></section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><p><strong>Lesson 4: User interaction</strong></p>
-<ul>
-<li>4.1: Clickable images</li>
-<li>4.2: Input controls</li>
-<li>4.3: Menus and pickers</li>
-<li>4.4: User navigation</li>
-<li>4.5: RecyclerView</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>Lesson 5: Delightful user experience</strong></p>
-<ul>
-<li>5.1: Drawables, styles, and themes</li>
-<li>5.2: Cards and colors</li>
-<li>5.3: Adaptive layouts</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>Lesson 6:Testing your UI</strong></p>
-<ul>
-<li>6.1: Espresso for UI testing</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<hr>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Unit-3:-Working-in-the-background"><a id="working-in-the-background">Unit 3: Working in the background</a><a class="anchor-link" href="#Unit-3:-Working-in-the-background">&#182;</a></h3><p>This unit covers how to do background work, how to schedule tasks, and how to trigger events. It covers the performance implications of executing work in the background, as well as best practices for reducing battery drain. You learn how Android determines which apps to keep running and which to stop when resources run low.</p>
-<p>You write an app that connects to the Internet in a background thread to find the author of any book. You also build apps that send notifications and schedule tasks, and you learn how to implement scheduling functionality for apps that run on earlier versions of Android.</p>
-
-</div>
-</div></section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><p><strong>Lesson 7: Background tasks</strong></p>
-<ul>
-<li>7.1: AsyncTask</li>
-<li>7.2: AsyncTask and AsyncTaskLoader</li>
-<li>7.3: Broadcast receivers</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>Lesson 8: Alarms and schedulers</strong></p>
-<ul>
-<li>8.1: Notifications</li>
-<li>8.2: The alarm manager</li>
-<li>8.3: JobScheduler</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<hr>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Unit-4:-Saving-user-data"><a id="saving-user-data">Unit 4: Saving user data</a><a class="anchor-link" href="#Unit-4:-Saving-user-data">&#182;</a></h3><p>This unit discusses how to store user data. You learn how to use shared preferences to save simple key value pairs, then you learn how to use the Room database to save, retrieve, and update user data. This unit also introduces you to the Android Architecture Components, which represent best practices for structuring your app.</p>
-
-</div>
-</div></section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><p><strong>Lesson 9: Preferences and settings</strong></p>
-<ul>
-<li>9.1: Shared preferences</li>
-<li>9.2: App settings</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>Lesson 10: Storing data with Room</strong></p>
-<ul>
-<li>10.1 Part A: Room, LiveData, and ViewModel</li>
-<li>10.1 Part B: Deleting data from a Room database</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Thanks-&amp;-Any-questions?">Thanks &amp; Any questions?<a class="anchor-link" href="#Thanks-&amp;-Any-questions?">&#182;</a></h1>
-</div>
-</div></section></section>
 </div>
 </div>
 </body>
 
 
-<script>
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "https://unpkg.com/reveal.js@4.0.2/dist/reveal.js"
-    ],
 
-    function(Reveal){
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            transition: "slide",
-        });
 
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
 
-        Reveal.addEventListener('slidechanged', update);
 
-        function setScrollingSlide() {
-            var scroll = false
-            if (scroll === true) {
-              var h = $('.reveal').height() * 0.95;
-              $('section.present').find('section')
-                .filter(function() {
-                  return $(this).height() > h;
-                })
-                .css('height', 'calc(95vh)')
-                .css('overflow-y', 'scroll')
-                .css('margin-top', '20px');
-            }
-        }
-
-        // check and set the scrolling slide every time the slide change
-        Reveal.addEventListener('slidechanged', setScrollingSlide);
-    }
-);
-</script>
 
 </html>

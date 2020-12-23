@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            style="@style/top_text_style"
+            android:text="@string/name_1" />
+
+        <TextView
+            android:id="@+id/name2"
+            android:layout_below="@id/name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            style="@style/top_text_style"
+            android:text="@string/name_2" />
+
+        <TextView
+            android:id="@+id/name3"
+            android:layout_below="@id/name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            style="@style/top_text_style"
+            android:text="@string/name_3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/name21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            style="@style/bottom_text_style"
+            android:text="@string/name_1" />
+
+        <TextView
+            android:id="@+id/name22"
+            android:layout_below="@id/name21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            style="@style/bottom_text_style"
+            android:text="@string/name_2" />
+
+        <TextView
+            android:id="@+id/name23"
+            android:layout_below="@id/name22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            style="@style/bottom_text_style"
+            android:text="@string/name_3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/name31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            style="@style/bottom_text_style"
+            android:text="@string/name_1" />
+
+        <TextView
+            android:id="@+id/name32"
+            android:layout_toRightOf="@id/name31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            style="@style/bottom_text_style"
+            android:text="@string/name_2" />
+
+        <TextView
+            android:id="@+id/name33"
+            android:layout_toRightOf="@id/name32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            style="@style/bottom_text_style"
+            android:text="@string/name_3" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

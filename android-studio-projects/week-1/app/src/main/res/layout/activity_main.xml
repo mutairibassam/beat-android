@@ -5,9 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/ic_launcher_foreground"
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_a"
+            android:layout_centerHorizontal="true"
+            android:textSize="40sp"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_below="@id/title"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/black"
+        />
+
+    <RelativeLayout
+        android:id="@+id/header_1"
+        android:layout_below="@id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -92,27 +120,27 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            style="@style/bottom_text_style"
+            style="@style/top_text_style"
             android:text="@string/name_1" />
 
         <TextView
             android:id="@+id/name32"
-            android:layout_toRightOf="@id/name31"
+            android:layout_toEndOf="@id/name31"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            style="@style/bottom_text_style"
+            style="@style/corner_text_style"
             android:text="@string/name_2" />
 
         <TextView
             android:id="@+id/name33"
-            android:layout_toRightOf="@id/name32"
+            android:layout_toEndOf="@id/name32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
-            style="@style/bottom_text_style"
+            style="@style/corner_text_style"
             android:text="@string/name_3" />
 
     </RelativeLayout>

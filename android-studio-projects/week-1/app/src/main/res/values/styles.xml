@@ -17,4 +17,9 @@
         <item name="android:textColor">@color/blue</item>
     </style>
 
+    <style name="corner_text_style">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

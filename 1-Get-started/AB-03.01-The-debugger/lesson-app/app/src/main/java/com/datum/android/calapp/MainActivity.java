@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void clearHighlight() {
         multiply.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.color.orange));
         div.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.color.orange));
@@ -83,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void equal(View view) {
+
+        if(arr.size() == 0 || arr2.size() == 0) {
+            return;
+        }
 
         StringBuilder sb = new StringBuilder();
         int size = arr.size();
@@ -140,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 sb.append(arr2.get(i));
             }
         }
-
 
         output.setText(sb.toString());
 

@@ -35,6 +35,12 @@ public class MainActivityTest {
     public void negative() {
         int current_number = 8;
         int converted = - (current_number * 2) + current_number;
+
+                    // - ( 8 * 2 ) + 8
+                    // - ( 16 ) + 8
+                    // - 16 + 8
+                    // - 8
+
         assertEquals(-8, converted);
 
         int current_number1 = 9;
@@ -52,6 +58,12 @@ public class MainActivityTest {
     public void positive() {
         int current_number = -8;
         int converted = - (current_number * 2) + current_number;
+
+                    // - ( -8 * -2 ) + ( -8 )
+                    // - ( -16 ) + ( -8 )
+                    // + 16 + - 8
+                    // + 8
+
         assertEquals(8, converted);
 
         int current_number4 = -4;

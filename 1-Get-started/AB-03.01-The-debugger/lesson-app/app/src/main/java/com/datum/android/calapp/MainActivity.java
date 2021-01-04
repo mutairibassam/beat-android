@@ -31,14 +31,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getInit();
+
+    }
+
+    /**
+     * Method name: getInit
+     *
+     * Desc: bind the views
+     */
+    public void getInit() {
         output = findViewById(R.id.output);
         multiply = findViewById(R.id.multiply_id);
         add = findViewById(R.id.add_id);
         sub = findViewById(R.id.subtract_id);
         div = findViewById(R.id.divison_id);
-
     }
 
+    /**
+     * Method name: clearHighlight
+     *
+     * Desc: remove all the highlight from the buttons
+     */
     public void clearHighlight() {
         multiply.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.color.orange));
         div.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.color.orange));
@@ -46,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
         sub.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.color.orange));
     }
 
+    /**
+     * Method name: clear
+     *
+     * Desc: clear all the output for a new calculation when the user click equal button
+     */
     public void clear() {
         arr = new ArrayList<>();
         arr2 = new ArrayList<>();
@@ -53,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
         operation = "";
     }
 
+    /**
+     * Method name: clear
+     *
+     * Desc: clear all the output for a new calculation when the user click AC button
+     *
+     * @param view
+     */
     public void clear(View view) {
         output.setText("0");
         arr = new ArrayList<>();
@@ -61,11 +87,23 @@ public class MainActivity extends AppCompatActivity {
         operation = "";
     }
 
+    /**
+     * Method name: percentage
+     *
+     * Desc: find the percentage of the current value
+     * @param view
+     */
     public void percentage(View view) {
         double result = current_num / 100.0;
         output.setText(String.valueOf(result));
     }
 
+    /**
+     * Method name: multiply, subtract, add, division
+     *
+     * Desc: update the operation value with a flag to identify the operation was selected
+     *
+     */
     public void multiply(View view) {
         operation = "*";
         multiply.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.color.light_orange));
@@ -85,9 +123,15 @@ public class MainActivity extends AppCompatActivity {
         operation = "/";
         div.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.color.light_orange));
     }
+    // ################################################################33
 
 
-
+    /**
+     * Method name: equal
+     *
+     * Description: do the calculation based on the user selection
+     *
+     */
     public void equal(View view) {
 
         if(arr.size() == 0 || arr2.size() == 0) {
@@ -114,16 +158,21 @@ public class MainActivity extends AppCompatActivity {
         int second = Integer.parseInt(String.valueOf(sb2));
 
         String total = "";
-        if(operation.equals("+")) {
-            total = String.valueOf(first + second);
-        } else if(operation.equals("/")) {
-            total = String.valueOf(first / second);
-        } else if(operation.equals("-")) {
-            total = String.valueOf(first - second);
-        } else if(operation.equals("*")) {
-            total = String.valueOf(first * second);
-        }
 
+        switch (operation) {
+            case "+":
+                total = String.valueOf(first + second);
+                break;
+            case "/":
+                total = String.valueOf(first / second);
+                break;
+            case "-":
+                total = String.valueOf(first - second);
+                break;
+            case "*":
+                total = String.valueOf(first * second);
+                break;
+        }
 
         output.setText(total);
         clear();
@@ -131,6 +180,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Method name: appendValues
+     *
+     * Description: Taking the number and save it in array to allow multiple numbers
+     *
+     * @param num pass the number which the user clicked
+     *
+     */
     public void appendValues(String num) {
 
         StringBuilder sb = new StringBuilder();
@@ -155,6 +213,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Method name: zero_clicked ....... nine_clicked
+     *
+     * Description: update the global var @current_num and pass the clicked number within @appendValues method
+     *
+     */
     public void zero_clicked(View view) {
         current_num = 0;
         appendValues("0");
@@ -214,21 +279,88 @@ public class MainActivity extends AppCompatActivity {
         appendValues("9");
     }
 
+    // #####################################################################
+
+    /**
+     * Method name: neg_pos_btn
+     *
+     * Desc: convert the current value from positive to negative and vice versa
+     *
+     * @param view
+     */
     public void neg_pos_btn(View view) {
 
         int mCurrentNum = Integer.parseInt(output.getText().toString());
 
-        if(mCurrentNum > 0) {
+        if(mCurrentNum > 9) {
 
             int converted = - (mCurrentNum * 2) + mCurrentNum;
             output.setText(String.valueOf(converted));
+            clear();
 
-        } else {
+            String s = String.valueOf(converted);
+            if(operation.equals("")) {
+                arr.add(s);
+            } else {
+                arr2.add(s);
+            }
 
-            int converted = - (mCurrentNum * 2) + mCurrentNum;
-            output.setText(String.valueOf(converted));
+            current_num = converted;
+
+            return;
 
         }
 
+        if(mCurrentNum < -9){
+
+            int converted = - (mCurrentNum * 2) + mCurrentNum;
+            output.setText(String.valueOf(converted));
+            clear();
+
+            String s = String.valueOf(converted);
+            if(operation.equals("")) {
+                arr.add(s);
+            } else {
+                arr2.add(s);
+            }
+
+            current_num = converted;
+
+            return;
+        }
+
+        if(current_num > 0) {
+
+            int converted = - (current_num * 2) + current_num;
+            output.setText(String.valueOf(converted));
+            clear();
+
+            String s = String.valueOf(converted);
+            if(operation.equals("")) {
+                arr.add(s);
+            } else {
+                arr2.add(s);
+            }
+
+            current_num = converted;
+
+        } else {
+
+            int converted = - (current_num * 2) + current_num;
+            output.setText(String.valueOf(converted));
+            clear();
+
+            String s = String.valueOf(converted);
+            if(operation.equals("")) {
+                arr.add(s);
+            } else {
+                arr2.add(s);
+            }
+
+            current_num = converted;
+        }
+
     }
+
+
 }

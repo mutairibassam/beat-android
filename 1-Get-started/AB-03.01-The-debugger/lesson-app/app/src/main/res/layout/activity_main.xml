@@ -233,7 +233,6 @@
                     android:layout_weight="1"
                     android:background="@color/orange"
                     android:text="="
-                    android:clickable="true"
                     android:onClick="equal"/>
 
             </LinearLayout>

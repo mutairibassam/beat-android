@@ -12,8 +12,10 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -77,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
      *
      * Desc: clear all the output for a new calculation when the user click AC button
      *
-     * @param view
      */
     public void clear(View view) {
         output.setText("0");
@@ -85,17 +86,6 @@ public class MainActivity extends AppCompatActivity {
         arr2 = new ArrayList<>();
         clearHighlight();
         operation = "";
-    }
-
-    /**
-     * Method name: percentage
-     *
-     * Desc: find the percentage of the current value
-     * @param view
-     */
-    public void percentage(View view) {
-        double result = current_num / 100.0;
-        output.setText(String.valueOf(result));
     }
 
     /**
@@ -162,19 +152,27 @@ public class MainActivity extends AppCompatActivity {
         switch (operation) {
             case "+":
                 total = String.valueOf(first + second);
+                output.setText(total);
                 break;
             case "/":
-                total = String.valueOf(first / second);
+                if(second != 0) {
+                    total = String.valueOf(first / second);
+                    output.setText(total);
+                    break;
+                }
+                output.setText("0");
+                Toast.makeText(this, "Not a number", Toast.LENGTH_SHORT).show();
                 break;
             case "-":
                 total = String.valueOf(first - second);
+                output.setText(total);
                 break;
             case "*":
                 total = String.valueOf(first * second);
+                output.setText(total);
                 break;
         }
 
-        output.setText(total);
         clear();
 
 
@@ -363,4 +361,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void percentage(View view) {
+
+        double res = current_num / 100.0;
+        output.setText(String.valueOf(res));
+
+    }
 }

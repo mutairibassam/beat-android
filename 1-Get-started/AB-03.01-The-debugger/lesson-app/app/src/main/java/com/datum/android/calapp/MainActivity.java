@@ -213,4 +213,22 @@ public class MainActivity extends AppCompatActivity {
 
         appendValues("9");
     }
+
+    public void neg_pos_btn(View view) {
+
+        int mCurrentNum = Integer.parseInt(output.getText().toString());
+
+        if(mCurrentNum > 0) {
+
+            int converted = - (mCurrentNum * 2) + mCurrentNum;
+            output.setText(String.valueOf(converted));
+
+        } else {
+
+            int converted = - (mCurrentNum * 2) + mCurrentNum;
+            output.setText(String.valueOf(converted));
+
+        }
+
+    }
 }

@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ /**
-  ~  * Created by mutairibassam on 1/2/21 10:29 PM
-  ~  * Copyright (c) 2021 . All rights reserved.
-  ~  * Last modified 1/2/21 1:33 PM
-  ~  */
-  -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.datum.android.calapp">
 

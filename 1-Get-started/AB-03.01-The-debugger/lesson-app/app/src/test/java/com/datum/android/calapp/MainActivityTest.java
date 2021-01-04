@@ -6,6 +6,8 @@
 
 package com.datum.android.calapp;
 
+import android.util.Log;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,20 +15,55 @@ import static org.junit.Assert.*;
 public class MainActivityTest {
 
     @Test
-    public void equal() {
+    public void percentage() {
+
+        double actual9 = 9.0 / 100.0;
+        assertEquals(0.09, actual9, 0);
+
+        double actual8 = 8.0 / 100.0;
+        assertEquals(0.08, actual8, 0);
+
+        double actual7 = 7.0 / 100.0;
+        assertEquals(0.07, actual7, 0);
+
+        double actual6 = 6.0 / 100.0;
+        assertEquals(0.06, actual6, 0);
 
     }
 
     @Test
-    public void percentage() {
+    public void negative() {
+        int current_number = 8;
+        int converted = - (current_number * 2) + current_number;
+        assertEquals(-8, converted);
 
-        double correct = 0.07;
-        double num = 8;
-        double delta = 0.1;
+        int current_number1 = 9;
+        int converted1 = - (current_number1 * 2) + current_number1;
+        assertEquals(-9, converted1);
 
-        double calc = 8 / 100.0;
+        int current_number2 = 3;
+        int converted2 = - (current_number2 * 2) + current_number2;
+        assertEquals(-3, converted2);
 
 
     }
 
+    @Test
+    public void positive() {
+        int current_number = -8;
+        int converted = - (current_number * 2) + current_number;
+        assertEquals(8, converted);
+
+        int current_number4 = -4;
+        int converted4 = - (current_number4 * 2) + current_number4;
+        assertEquals(4, converted4);
+
+        int current_number5 = -5;
+        int converted5 = - (current_number5 * 2) + current_number5;
+        assertEquals(5, converted5);
+
+        int current_number7 = -7;
+        int converted7 = - (current_number7 * 2) + current_number7;
+        assertEquals(7, converted7);
+    }
 }

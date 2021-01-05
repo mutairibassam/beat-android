@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mSave;
 
     CheckBox mPython, mJava, mSql, mFlask, mXml, mDjango, mJS;
-    ArrayList<String> skills;
+    ArrayList<String> skills = new ArrayList<>();
 
     boolean isMale = true;
     String sName, sEmail, sMobile, sJobTitle;
@@ -63,21 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mSave = findViewById(R.id.btn_save);
 
-        checkboxInit();
         hideViews();
         getSpinnerData();
-    }
-
-    private void checkboxInit() {
-        mPython = findViewById(R.id.python);
-        mJava = findViewById(R.id.java);
-        mSql = findViewById(R.id.sql);
-        mFlask = findViewById(R.id.flask);
-        mXml = findViewById(R.id.xml);
-        mDjango = findViewById(R.id.django);
-        mJS = findViewById(R.id.js);
-
-        skills = new ArrayList<>();
     }
 
     private void getSpinnerData() {
@@ -151,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra(GlobalConstants.GENDER, isMale);
         intent.putExtra(GlobalConstants.MOBILE, sMobile);
         intent.putExtra(GlobalConstants.JOB_TITLE, sJobTitle);
-        intent.putStringArrayListExtra("skills", skills);
+        intent.putStringArrayListExtra(GlobalConstants.SKILLS, skills);
         startActivity(intent);
     }
 

@@ -7,5 +7,6 @@ public class GlobalConstants {
     public static final String GENDER = "GENDER";
     public static final String MOBILE = "MOBILE";
     public static final String JOB_TITLE = "JOB_TITLE";
+    public static final String SKILLS = "SKILLS";
 
 }

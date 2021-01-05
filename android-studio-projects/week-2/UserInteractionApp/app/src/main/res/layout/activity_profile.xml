@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".Profile">
 
     <androidx.cardview.widget.CardView
@@ -44,7 +45,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/txt_jobtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -66,11 +67,11 @@
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                app:layout_constraintStart_toStartOf="@+id/txt_jobtitle"
+                app:layout_constraintTop_toBottomOf="@+id/txt_jobtitle" />
 
             <TextView
-                android:id="@+id/txt_mobile2"
+                android:id="@+id/txt_skills"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

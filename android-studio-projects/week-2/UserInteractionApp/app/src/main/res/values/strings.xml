@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">UserInteractionApp</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="username">Username:</string>
+    <string name="email">Email:</string>
+    <string name="job_title">Job Title:</string>
+    <string name="mobile">Mobile:</string>
+    <string name="skills">Skills:</string>
 
     <string-array name="time">
         <item>Morning</item>

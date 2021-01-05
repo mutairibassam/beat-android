@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">UserInteractionApp</string>
+
+    <string-array name="time">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Night</item>
+    </string-array>
+
+    <string-array name="day">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+    </string-array>
+
+</resources>

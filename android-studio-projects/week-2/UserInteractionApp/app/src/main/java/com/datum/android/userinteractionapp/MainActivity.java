@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSpinnerTime = findViewById(R.id.time_spinner);
         mRadioGroup = findViewById(R.id.radioGroup);
         mMale = findViewById(R.id.radioMale);
-        mFemale = findViewById(R.id.radioFemail);
+        mFemale = findViewById(R.id.radioFemale);
         seekBar = findViewById(R.id.seekBar);
         textView = findViewById(R.id.textView);
 
@@ -137,11 +137,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Please fill your name", Toast.LENGTH_LONG).show();
             return;
         }
+
         if(sEmail.equals("")) {
             new AlertDialog.Builder(this)
                     .setTitle("Missing fields")
                     .setMessage("Email field is required")
                     .setPositiveButton("Understand", null)
+                    .setNeutralButton("it's fine", null)
+                    .setNegativeButton("Don't agree" , null)
                     .show();
             return;
         }
@@ -166,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-        if (checkedId == R.id.radioFemail) isMale = false;
+        if (checkedId == R.id.radioFemale) isMale = false;
         else isMale = true;
     }
 

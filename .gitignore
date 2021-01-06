@@ -18,6 +18,7 @@ ipython_config.py
 slides/
 
 # Remove my own videos
+videos/
 *.mov
 
 # Remove previous ipynb_checkpoints

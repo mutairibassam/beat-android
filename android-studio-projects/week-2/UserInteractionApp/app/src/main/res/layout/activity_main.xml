@@ -360,5 +360,27 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/js" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="datePicker"
+            android:text="Date"
+            app:layout_constraintBottom_toTopOf="@+id/btn_save"
+            app:layout_constraintStart_toEndOf="@+id/time_spinner" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:onClick="timePicker"
+            android:text="Time"
+            app:layout_constraintBottom_toBottomOf="@+id/button"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="@+id/button" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

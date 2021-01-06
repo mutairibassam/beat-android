@@ -1,13 +1,12 @@
 package com.datum.android.userinteractionapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,6 +19,9 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.datum.android.userinteractionapp.pickers.DatePickerFragment;
+import com.datum.android.userinteractionapp.pickers.TimePickerFragment;
 
 import java.util.ArrayList;
 
@@ -246,4 +248,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    public void datePicker(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+
+    }
+
+    public void timePicker(View view) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+
+    }
 }

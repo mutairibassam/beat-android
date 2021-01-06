@@ -12,14 +12,14 @@ import java.util.ArrayList;
 
 public class Profile extends AppCompatActivity {
 
-    TextView mName, mEmail, mJobTitle, mMobile, mSkills;
-    TextView txtSkills, txtJobtitle, txtMobile;
+    TextView mName, mEmail, mJobTitle, mMobile, mSkills, mDay, mTime;
+    TextView txtSkills, txtJobtitle, txtMobile, txtDay, txtTime;
 
     ImageView mImageGender;
 
-    String sName, sEmail, sJobTitle, sMobile;
+    String sName, sEmail, sJobTitle, sMobile, sDay, sTime;
     boolean isMale;
-    ArrayList<String> skills;
+    ArrayList<String> skills = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,14 @@ public class Profile extends AppCompatActivity {
         mJobTitle = findViewById(R.id.job_title);
         mMobile = findViewById(R.id.mobile);
         mSkills = findViewById(R.id.skills);
+        mDay = findViewById(R.id.day);
+        mTime = findViewById(R.id.time);
 
         txtJobtitle = findViewById(R.id.txt_jobtitle);
         txtSkills = findViewById(R.id.txt_skills);
         txtMobile = findViewById(R.id.txt_mobile);
+        txtDay = findViewById(R.id.txt_day);
+        txtTime = findViewById(R.id.txt_time);
 
         mImageGender = findViewById(R.id.imgView);
     }
@@ -54,6 +58,8 @@ public class Profile extends AppCompatActivity {
             sJobTitle = intent.getStringExtra(GlobalConstants.JOB_TITLE);
             sMobile = intent.getStringExtra(GlobalConstants.MOBILE);
             skills = intent.getStringArrayListExtra(GlobalConstants.SKILLS);
+            sDay = intent.getStringExtra(GlobalConstants.DAY);
+            sTime = intent.getStringExtra(GlobalConstants.TIME);
 
             prepareLayout();
             setValues();
@@ -91,6 +97,8 @@ public class Profile extends AppCompatActivity {
         mEmail.setText(sEmail);
         mJobTitle.setText(sJobTitle);
         mMobile.setText(sMobile);
+        mDay.setText(sDay);
+        mTime.setText(sTime);
 
         StringBuilder sb = new StringBuilder();
         if(skills != null) {

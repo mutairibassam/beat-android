@@ -1,24 +1,30 @@
 package com.datum.android.userinteractionapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener,
+        AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -28,12 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RadioGroup mRadioGroup;
     RadioButton mMale, mFemale;
     Button mSave;
+    SeekBar seekBar;
+    TextView textView;
 
-    CheckBox mPython, mJava, mSql, mFlask, mXml, mDjango, mJS;
     ArrayList<String> skills = new ArrayList<>();
 
     boolean isMale = true;
-    String sName, sEmail, sMobile, sJobTitle;
+    String sName, sEmail, sMobile, sJobTitle, sDay, sTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSave.setOnClickListener(this);
 
         mRadioGroup.setOnCheckedChangeListener(this);
+        mSpinnerDay.setOnItemSelectedListener(this);
+        mSpinnerTime.setOnItemSelectedListener(this);
+        seekBar.setOnSeekBarChangeListener(this);
 
     }
 
@@ -55,11 +65,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSwitch = findViewById(R.id.btn_switch);
         mMobile = findViewById(R.id.txt_mobile);
         mJobTitle = findViewById(R.id.job_title);
-        mSpinnerDay = findViewById(R.id.spinner3);
-        mSpinnerTime = findViewById(R.id.spinner4);
+        mSpinnerDay = findViewById(R.id.day_spinner);
+        mSpinnerTime = findViewById(R.id.time_spinner);
         mRadioGroup = findViewById(R.id.radioGroup);
         mMale = findViewById(R.id.radioMale);
         mFemale = findViewById(R.id.radioFemail);
+        seekBar = findViewById(R.id.seekBar);
+        textView = findViewById(R.id.textView);
 
         mSave = findViewById(R.id.btn_save);
 
@@ -139,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra(GlobalConstants.MOBILE, sMobile);
         intent.putExtra(GlobalConstants.JOB_TITLE, sJobTitle);
         intent.putStringArrayListExtra(GlobalConstants.SKILLS, skills);
+        intent.putExtra(GlobalConstants.DAY, sDay);
+        intent.putExtra(GlobalConstants.TIME, sTime);
         startActivity(intent);
     }
 
@@ -196,4 +210,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+        switch (adapterView.getId()) {
+            case R.id.day_spinner:
+                sDay = adapterView.getItemAtPosition(pos).toString();
+                break;
+
+            case R.id.time_spinner:
+                sTime = adapterView.getItemAtPosition(pos).toString();
+                break;
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progressValue, boolean b) {
+        textView.setTextSize((float)(progressValue) + 25);
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+
 }

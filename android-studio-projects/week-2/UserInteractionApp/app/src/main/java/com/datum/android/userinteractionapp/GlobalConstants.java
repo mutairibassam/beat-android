@@ -8,5 +8,7 @@ public class GlobalConstants {
     public static final String MOBILE = "MOBILE";
     public static final String JOB_TITLE = "JOB_TITLE";
     public static final String SKILLS = "SKILLS";
+    public static final String DAY = "DAY";
+    public static final String TIME = "TIME";
 
 }

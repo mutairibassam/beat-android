@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.datum.android.recyclerviewapp.adapter.CustomAdapter;
 import com.datum.android.recyclerviewapp.adapter.PostsAdapter;
+import com.datum.android.recyclerviewapp.model.MyCustomAPI;
 import com.datum.android.recyclerviewapp.model.PostsModel;
 import com.datum.android.recyclerviewapp.networking.api.Service;
 import com.datum.android.recyclerviewapp.networking.generators.DataServiceGenerator;
@@ -26,56 +28,89 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
 
-    PostsAdapter mPostsAdapter;
-    List<PostsModel> mPostsList;
+    CustomAdapter customAdapter;
+    List<MyCustomAPI> myCustomAPI_List;
+
+//    PostsAdapter mPostsAdapter;
+//    List<PostsModel> mPostsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fetchPosts();
+        mRecyclerView = findViewById(R.id.recyclerview);
+
+        fetchMyCustomAPI();
+
+//        fetchPosts();
     }
 
-    private void fetchPosts() {
+    private void fetchMyCustomAPI() {
 
         Service service = DataServiceGenerator.getRetrofit().create(Service.class);
 
-        Call<List<PostsModel>> call = service.fetchPosts();
+        Call<List<MyCustomAPI>> call = service.fetchMyCustomAPI();
 
-        call.enqueue(new Callback<List<PostsModel>>() {
+        call.enqueue(new Callback<List<MyCustomAPI>>() {
             @Override
-            public void onResponse(Call<List<PostsModel>> call, Response<List<PostsModel>> response) {
+            public void onResponse(Call<List<MyCustomAPI>> call, Response<List<MyCustomAPI>> response) {
 
-                Log.d(TAG, "onResponse: " + response.message());
+                myCustomAPI_List = response.body();
 
-                mPostsList = response.body();
-
-                mRecyclerView = findViewById(R.id.recyclerview);
-
-                mPostsAdapter = new PostsAdapter(getApplicationContext(), mPostsList);
+                customAdapter = new CustomAdapter(getApplicationContext(), myCustomAPI_List);
 
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-                mRecyclerView.setAdapter(mPostsAdapter);
-
-
+                mRecyclerView.setAdapter(customAdapter);
             }
 
             @Override
-            public void onFailure(Call<List<PostsModel>> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-
-                if (t instanceof IOException) {
-                    Toast.makeText(MainActivity.this, "this is an actual network failure", Toast.LENGTH_SHORT).show();
-
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
-
-                }
+            public void onFailure(Call<List<MyCustomAPI>> call, Throwable t) {
 
             }
         });
     }
+
+//    private void fetchPosts() {
+//
+//        Service service = DataServiceGenerator.getRetrofit().create(Service.class);
+//
+//        Call<List<PostsModel>> call = service.fetchPosts();
+//
+//        call.enqueue(new Callback<List<PostsModel>>() {
+//            @Override
+//            public void onResponse(Call<List<PostsModel>> call, Response<List<PostsModel>> response) {
+//
+//                Log.d(TAG, "onResponse: " + response.message());
+//
+//                mPostsList = response.body();
+//
+//                mRecyclerView = findViewById(R.id.recyclerview);
+//
+//                mPostsAdapter = new PostsAdapter(getApplicationContext(), mPostsList);
+//
+//                mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//
+//                mRecyclerView.setAdapter(mPostsAdapter);
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<PostsModel>> call, Throwable t) {
+//                Log.d(TAG, "onFailure: " + t.getMessage());
+//
+//                if (t instanceof IOException) {
+//                    Toast.makeText(MainActivity.this, "this is an actual network failure", Toast.LENGTH_SHORT).show();
+//
+//                }
+//                else {
+//                    Toast.makeText(MainActivity.this, "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+//
+//                }
+//
+//            }
+//        });
+//    }
 }

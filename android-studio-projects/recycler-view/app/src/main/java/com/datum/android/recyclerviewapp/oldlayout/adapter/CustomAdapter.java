@@ -1,7 +1,6 @@
-package com.datum.android.recyclerviewapp.adapter;
+package com.datum.android.recyclerviewapp.oldlayout.adapter;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.datum.android.recyclerviewapp.R;
-import com.datum.android.recyclerviewapp.model.MyCustomAPI;
+import com.datum.android.recyclerviewapp.oldlayout.model.MyCustomAPI;
 
 import java.util.List;
 

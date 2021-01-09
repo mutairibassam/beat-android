@@ -1,8 +1,8 @@
-package com.datum.android.recyclerviewapp.networking.generators;
+package com.datum.android.recyclerviewapp.oldlayout.networking.generators;
 
 import android.util.Log;
 
-import com.datum.android.recyclerviewapp.networking.Routes;
+import com.datum.android.recyclerviewapp.oldlayout.networking.Routes;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

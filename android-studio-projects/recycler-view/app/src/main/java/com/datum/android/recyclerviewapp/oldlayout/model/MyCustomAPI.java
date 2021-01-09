@@ -1,4 +1,4 @@
-package com.datum.android.recyclerviewapp.model;
+package com.datum.android.recyclerviewapp.oldlayout.model;
 
 public class MyCustomAPI {
 

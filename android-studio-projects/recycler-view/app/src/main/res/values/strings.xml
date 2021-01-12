@@ -1,12 +1,3 @@
 <resources>
     <string name="app_name">RecyclerViewApp</string>
-
-    <string-array name="dummay_data">
-        <item>Cat</item>
-        <item>Elephant</item>
-        <item>Lion</item>
-        <item>Rabbit</item>
-        <item>Snake</item>
-        <item>Cow</item>
-    </string-array>
 </resources>

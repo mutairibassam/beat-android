@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">FixMeApp</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="username">Username:</string>
+    <string name="email">Email:</string>
+    <string name="job_title">Job Title:</string>
+    <string name="mobile">Mobile:</string>
+    <string name="skills">Skills:</string>
+
+    <!-- ################ hint ################ -->
+    <string name="username_hint">Username</string>
+    <string name="email_hint">Email</string>
+    <string name="job_title_hint">Job Title</string>
+    <string name="mobile_hint">Mobile</string>
+    <string name="skills_hint">Skills</string>
+
+    <!-- ##################################### -->
+
+    <string name="select_your_skills">Select your skills</string>
+    <string name="appropriate_time">Appropriate time</string>
+    <string name="tell_me_about_you">Tell me about you</string>
+    <string name="name">Name</string>
+    <string name="gender">Gender:</string>
+    <string name="additional_details">Additional details</string>
+    <string name="optional">(optional)</string>
+    <string name="skills_desc">Please select what you think you are good at it.</string>
+    <string name="time_message">Please select the most suitable time for you for communication</string>
+    <string name="python">Python</string>
+    <string name="java">Java</string>
+    <string name="sql">SQL</string>
+    <string name="flask">Flask</string>
+    <string name="xml">XML</string>
+    <string name="django">Django</string>
+    <string name="javascript">JavaScript</string>
+    <string name="day">Day:</string>
+    <string name="time">Time:</string>
+    <string name="save">Save</string>
+
+
+
+
+    <string-array name="time">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Night</item>
+    </string-array>
+
+    <string-array name="day">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+    </string-array>
+</resources>

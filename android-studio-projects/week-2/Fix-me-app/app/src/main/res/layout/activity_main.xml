@@ -19,7 +19,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/leftCornerTop"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -182,10 +181,13 @@
                 android:onClick="bottomCenter"
                 tools:text="X"/>
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/gray"/>
+            <!-- TODO 4: complete the borders
+                          you need just to uncomment the below code -->
+
+<!--            <View-->
+<!--                android:layout_width="1dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/gray"/>-->
 
             <TextView
                 android:id="@+id/rightCornerBottom"

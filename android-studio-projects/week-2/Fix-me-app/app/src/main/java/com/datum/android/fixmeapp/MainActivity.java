@@ -1,13 +1,7 @@
 package com.datum.android.fixmeapp;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -38,6 +32,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getInit();
+
+    }
+
+
+    public void getInit() {
+
+        // TODO 1: add leftCornerTop id in the XML file
+
+        leftCornerTop = findViewById(R.id.leftCornerTop);
+        leftMiddle = findViewById(R.id.leftMiddle);
+        leftCornerBottom = findViewById(R.id.leftCornerBottom);
+
+        // TODO 2: add the missing textview
+
+        topCenter = findViewById(R.id.centerTop);
+        bottomCenter = findViewById(R.id.bottomCenter);
+
+        rightCornerTop = findViewById(R.id.rightCornerTop);
+        rightMiddle = findViewById(R.id.rightMiddle);
+        rightCornerBottom = findViewById(R.id.rightCornerBottom);
 
     }
 
@@ -118,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
         if(four.equals("X") && five.equals("X") && six.equals("X")) {
             Util.showAlert(MainActivity.this, "X");
             newGame();
-            return;
+            // TODO 5: add return keyword
+
         }
 
         if(four.equals("O") && five.equals("O") && six.equals("O")) {
@@ -133,30 +148,24 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if(seven.equals("O") && eight.equals("O") && nine.equals("O")) {
-            Util.showAlert(MainActivity.this, "O");
-            newGame();
-        }
+        // TODO 6: complete the missing use-case ( 7-8-9 )
+
+        /**
+         * Hint: you can copy the lines from 145 to 149 , and instead of validating X validate O
+         *
+         */
+
     }
 
-
+    /**
+     * To change the player from player 1 to player 2 and vice versa
+     *
+     */
     private void changePlayer() {
         if(isX) isX = false;
         else isX = true;
     }
-    public void getInit() {
-        leftCornerTop = findViewById(R.id.leftCornerTop);
-        leftMiddle = findViewById(R.id.leftMiddle);
-        leftCornerBottom = findViewById(R.id.leftCornerBottom);
 
-        topCenter = findViewById(R.id.centerTop);
-        centerCenter = findViewById(R.id.centerCenter);
-        bottomCenter = findViewById(R.id.bottomCenter);
-
-        rightCornerTop = findViewById(R.id.rightCornerTop);
-        rightMiddle = findViewById(R.id.rightMiddle);
-        rightCornerBottom = findViewById(R.id.rightCornerBottom);
-    }
 
     public void leftCornerTop(View view) {
         if(leftCornerTop.getText().toString().isEmpty()) {
@@ -267,7 +276,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             eight = bottomCenter.getText().toString();
-            check();
+            // TODO 3: call check method
+
         }
     }
 
@@ -287,6 +297,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Clearing for a new game
+     */
     public void newGame() {
         leftCornerTop.setText("");
         leftMiddle.setText("");

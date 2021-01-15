@@ -1,11 +1,8 @@
 package com.datum.android.fixmeapp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class Util {
 

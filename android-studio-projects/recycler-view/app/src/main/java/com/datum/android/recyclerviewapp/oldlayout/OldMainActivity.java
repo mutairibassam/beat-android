@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.datum.android.recyclerviewapp.R;
 import com.datum.android.recyclerviewapp.oldlayout.adapter.CustomAdapter;
-import com.datum.android.recyclerviewapp.oldlayout.model.MyCustomAPI;
+import com.datum.android.recyclerviewapp.oldlayout.model.MyCustomTable;
 import com.datum.android.recyclerviewapp.oldlayout.networking.api.Service;
 import com.datum.android.recyclerviewapp.oldlayout.networking.generators.DataServiceGenerator;
 
@@ -25,7 +25,7 @@ public class OldMainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
 
     CustomAdapter customAdapter;
-    List<MyCustomAPI> myCustomAPI_List;
+    List<MyCustomTable> myCustomAPI_List;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +42,11 @@ public class OldMainActivity extends AppCompatActivity {
 
         Service service = DataServiceGenerator.getRetrofit().create(Service.class);
 
-        Call<List<MyCustomAPI>> call = service.fetchMyCustomAPI();
+        Call<List<MyCustomTable>> call = service.fetchMyCustomAPI();
 
-        call.enqueue(new Callback<List<MyCustomAPI>>() {
+        call.enqueue(new Callback<List<MyCustomTable>>() {
             @Override
-            public void onResponse(Call<List<MyCustomAPI>> call, Response<List<MyCustomAPI>> response) {
+            public void onResponse(Call<List<MyCustomTable>> call, Response<List<MyCustomTable>> response) {
 
                 myCustomAPI_List = response.body();
 
@@ -58,7 +58,7 @@ public class OldMainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<MyCustomAPI>> call, Throwable t) {
+            public void onFailure(Call<List<MyCustomTable>> call, Throwable t) {
 
             }
         });

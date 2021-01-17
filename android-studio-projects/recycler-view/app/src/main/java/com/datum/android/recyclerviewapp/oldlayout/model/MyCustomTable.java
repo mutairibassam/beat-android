@@ -1,18 +1,9 @@
 package com.datum.android.recyclerviewapp.oldlayout.model;
 
-public class MyCustomAPI {
-
-    public MyCustomAPI() {
-    }
+public class MyCustomTable {
 
     private String name;
     private String email;
-
-
-    public MyCustomAPI(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
 
     public String getName() {
         return name;
@@ -22,3 +13,10 @@ public class MyCustomAPI {
         return email;
     }
 }
+
+
+
+
+
+
+

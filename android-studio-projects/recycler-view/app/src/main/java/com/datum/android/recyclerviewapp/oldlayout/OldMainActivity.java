@@ -1,8 +1,10 @@
 package com.datum.android.recyclerviewapp.oldlayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 
@@ -22,10 +24,11 @@ public class OldMainActivity extends AppCompatActivity {
 
     private static final String TAG = OldMainActivity.class.getSimpleName();
 
-    RecyclerView mRecyclerView;
 
     CustomAdapter customAdapter;
-    List<MyCustomTable> myCustomAPI_List;
+    List<MyCustomTable> myCustomList;
+
+    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class OldMainActivity extends AppCompatActivity {
 
     }
 
+
+
     private void fetchMyCustomAPI() {
 
         Service service = DataServiceGenerator.getRetrofit().create(Service.class);
@@ -48,13 +53,27 @@ public class OldMainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<MyCustomTable>> call, Response<List<MyCustomTable>> response) {
 
-                myCustomAPI_List = response.body();
+//                myCustomList = response.body();
+                myCustomList = new MyCustomTable().getData();
 
-                customAdapter = new CustomAdapter(getApplicationContext(), myCustomAPI_List);
 
+                // Use only one
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//                mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+//                mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL));
 
+
+//                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+//                mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
+
+
+                // create a new custom Adapter
+                customAdapter = new CustomAdapter(getApplicationContext(), myCustomList);
+
+                // take the data and let the recyclerview present it
                 mRecyclerView.setAdapter(customAdapter);
+
+
             }
 
             @Override

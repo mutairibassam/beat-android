@@ -22,10 +22,13 @@ import java.util.ListIterator;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
-    Context mContext;
+    /**
+     * @Class CustomAdapter
+     *
+     */
+    Context mContext;               // Required to accept getApplicationContext() as an argument
+    List<MyCustomTable> myList;     // already declared
 
-
-    List<MyCustomTable> myList;
 
     public CustomAdapter(Context mContext, List<MyCustomTable> myList) {
         this.mContext = mContext;
@@ -48,6 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.name.setText(myList.get(position).getName());
+        holder.email.setText(myList.get(position).getEmail());
 
     }
 

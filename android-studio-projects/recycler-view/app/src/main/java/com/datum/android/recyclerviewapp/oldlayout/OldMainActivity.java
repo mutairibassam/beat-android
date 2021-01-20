@@ -45,6 +45,18 @@ public class OldMainActivity extends AppCompatActivity {
 
     private void fetchMyCustomAPI() {
 
+//        myCustomList = new MyCustomTable().getData();
+
+
+//        // Use only one
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//
+//        // create a new custom Adapter
+//        customAdapter = new CustomAdapter(myCustomList);
+//
+//        // take the data and let the recyclerview present it
+//        mRecyclerView.setAdapter(customAdapter);
+
         Service service = DataServiceGenerator.getRetrofit().create(Service.class);
 
         Call<List<MyCustomTable>> call = service.fetchMyCustomAPI();
@@ -53,19 +65,12 @@ public class OldMainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<MyCustomTable>> call, Response<List<MyCustomTable>> response) {
 
-//                myCustomList = response.body();
-                myCustomList = new MyCustomTable().getData();
+                myCustomList = response.body();
+//                myCustomList = new MyCustomTable().getData();
 
 
                 // Use only one
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-//                mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-//                mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL));
-
-
-//                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
-//                mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
-
 
                 // create a new custom Adapter
                 customAdapter = new CustomAdapter(getApplicationContext(), myCustomList);

@@ -35,6 +35,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.myList = myList;
     }
 
+    public CustomAdapter(List<MyCustomTable> myList) {
+        this.myList = myList;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,7 +46,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         Context context = parent.getContext();
         int layout = R.layout.custom_api_row;
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(layout, parent, false);
+        boolean shouldAttachToTheParent = false;
+        View view = inflater.inflate(layout, parent, shouldAttachToTheParent);
 
         return new MyViewHolder(view);
     }

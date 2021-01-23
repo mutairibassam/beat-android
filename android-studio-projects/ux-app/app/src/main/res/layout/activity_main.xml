@@ -54,17 +54,33 @@
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
+    <!--    <TextView-->
+<!--        android:id="@+id/textView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="60dp"-->
+<!--        android:background="@drawable/bubble2"-->
+<!--        android:text="dd"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.494"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Logo"
-        android:textColor="#000000"
-        android:textSize="24sp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/bubble"
+        android:text="slkdjflskjdflskjdflksjdlkfjsldkfjlsdkjf.\nkjdflskjdflksjdlkfjsldkfjlsdkjf\nkjdflskjdflksjdlkfjsldkfjlsdkjf\nkjdflskjdflksjdlkfjsldkfjlsdkjf\nkjdflskjdflksjdlkfjsldkfjlsdkjf\nkjdflskjdflksjdlkfjsldkfjlsdkjf\nkjdflskjdflksjdlkfjsldkfjlsdkjf"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
 
     <Button
         android:id="@+id/button"

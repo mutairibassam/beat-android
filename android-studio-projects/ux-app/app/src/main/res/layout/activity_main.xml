@@ -72,29 +72,27 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:text="logo"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/button"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/btn_submit"
-        android:text="Button 1"
+        android:text="Button 2"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <EditText
         android:id="@+id/editText"
@@ -128,7 +126,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/custom_input"
+        android:text="Button 1"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="44dp"
+        android:text="Android"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="Custom"
+        app:track="@drawable/track"
+        android:thumb="@drawable/switch_thumb"
+        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/switch1"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

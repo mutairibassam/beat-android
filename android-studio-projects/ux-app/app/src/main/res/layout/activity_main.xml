@@ -7,67 +7,6 @@
     android:layout_margin="16dp"
     tools:context=".MainActivity">
 
-<!--    <View-->
-<!--        android:id="@+id/view1"-->
-<!--        style="@style/view_box"-->
-<!--        android:background="@color/cardview_dark_background"/>-->
-
-<!--    <View-->
-<!--        android:id="@+id/view2"-->
-<!--        style="@style/view_box"-->
-<!--        android:background="@color/purple_200"/>-->
-
-<!--    <View-->
-<!--        android:id="@+id/view3"-->
-<!--        style="@style/view_box"-->
-<!--        android:background="@color/teal_200"/>-->
-
-
-<!--    <View-->
-<!--        android:id="@+id/view4"-->
-<!--        style="@style/view_box"-->
-<!--        android:background="@color/teal_700"/>-->
-
-<!--    <View-->
-<!--        android:id="@+id/view5"-->
-<!--        style="@style/view_box"-->
-<!--        android:background="@color/purple_700"/>-->
-
-
-<!--    <View-->
-<!--        android:id="@+id/view6"-->
-<!--        style="@style/view_box"-->
-<!--        android:background="@color/purple_500"/>-->
-
-
-<!--    <androidx.constraintlayout.helper.widget.Flow-->
-<!--        android:id="@+id/flow"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:constraint_referenced_ids="view1,view2,view3,view4,view5,view6"-->
-<!--        app:flow_maxElementsWrap="3"-->
-<!--        app:flow_horizontalGap="10dp"-->
-<!--        app:flow_verticalGap="10dp"-->
-<!--        app:flow_wrapMode="aligned"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-
-    <!--    <TextView-->
-<!--        android:id="@+id/textView4"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="60dp"-->
-<!--        android:background="@drawable/bubble2"-->
-<!--        android:text="dd"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="24sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.494"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -161,6 +100,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/switch1"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        app:srcCompat="@drawable/layerlist" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

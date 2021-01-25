@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+
+    <style name="MyOwnTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/ic_launcher_background</item>
+        <item name="colorOnPrimary">@color/dark_gray</item>
+
+    </style>
+
+
+</resources>

@@ -2,25 +2,24 @@ package com.datum.android.espressouitesting;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity {
 
-    Button mLogin;
+    Button mLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_message);
 
-        mLogin = findViewById(R.id.login_button);
-        mLogin.setOnClickListener(new View.OnClickListener() {
+        mLogout = findViewById(R.id.logout_button);
+        mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), MessageActivity.class));
+                finish();
             }
         });
     }

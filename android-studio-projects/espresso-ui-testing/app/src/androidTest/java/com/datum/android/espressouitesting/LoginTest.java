@@ -55,6 +55,15 @@ public class LoginTest {
         onView(withId(R.id.et_password))
                 .check(matches(withText("12345")));
 
+        // Button
+        // onView(withId(R.id.changeTextBt)).perform(click());
+
+        // allOf = to combine multiple matchers
+        // onView(allOf(withId(R.id.button_signin), withText("Sign-in")));
+        // onView(allOf(withId(R.id.button_signin), not(withText("Sign-out"))));
+
+        
+
     }
 
 }

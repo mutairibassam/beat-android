@@ -29,6 +29,8 @@ public class MessageActivity extends AppCompatActivity {
     Button mDialog, mLogout;
     TextView mName;
 
+    EditText input = new EditText(MessageActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +39,10 @@ public class MessageActivity extends AppCompatActivity {
         mName = findViewById(R.id.tv_name);
 
         mDialog = findViewById(R.id.dialog);
-        mDialog.setOnClickListener(view ->
-
-        {
+        mDialog.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(MessageActivity.this);
             builder.setTitle("Enter a name");
 
-            EditText input = new EditText(MessageActivity.this);
             input.setInputType(InputType.TYPE_CLASS_TEXT);
             builder.setView(input);
 
@@ -77,7 +76,6 @@ public class MessageActivity extends AppCompatActivity {
             });
 
         });
-
 
         mLogout = findViewById(R.id.logout_button);
         mLogout.setOnClickListener(view -> finish());

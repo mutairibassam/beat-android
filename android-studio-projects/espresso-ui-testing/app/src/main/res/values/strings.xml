@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EspressoUITesting</string>
+    <item name="et_input" type="id"/>
 </resources>

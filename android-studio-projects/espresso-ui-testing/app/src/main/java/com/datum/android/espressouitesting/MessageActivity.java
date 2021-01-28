@@ -29,7 +29,6 @@ public class MessageActivity extends AppCompatActivity {
     Button mDialog, mLogout;
     TextView mName;
 
-    EditText input = new EditText(MessageActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,10 @@ public class MessageActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(MessageActivity.this);
             builder.setTitle("Enter a name");
 
+            EditText input = new EditText(MessageActivity.this);
+            input.setId(R.id.et_input);
             input.setInputType(InputType.TYPE_CLASS_TEXT);
+
             builder.setView(input);
 
             builder.setPositiveButton("OK", (dialogInterface, i) -> {

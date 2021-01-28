@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogBehavior;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -28,6 +29,9 @@ public class MessageActivity extends AppCompatActivity {
 
     Button mDialog, mLogout;
     TextView mName;
+
+    public MessageActivity() {
+    }
 
 
     @Override
@@ -49,7 +53,10 @@ public class MessageActivity extends AppCompatActivity {
             builder.setView(input);
 
             builder.setPositiveButton("OK", (dialogInterface, i) -> {
-                mName.setText(input.getText().toString());
+                String name = input.getText().toString();
+                mName.setText(name);
+                showToast(buildToastMessage(name));
+
             });
 
             final AlertDialog dialog = builder.create();
@@ -82,6 +89,14 @@ public class MessageActivity extends AppCompatActivity {
         mLogout = findViewById(R.id.logout_button);
         mLogout.setOnClickListener(view -> finish());
 
+    }
+
+    public static String buildToastMessage(String name) {
+        return "Your name is " + name;
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public void enableDialog(AlertDialog dialog) {

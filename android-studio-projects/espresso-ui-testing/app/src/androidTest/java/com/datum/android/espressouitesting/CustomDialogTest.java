@@ -50,9 +50,9 @@ public class CustomDialogTest {
 
         onView(withId(R.id.tv_name)).check(matches(withText(EXPECTED_NAME)));
 
-//        onView(withText("Your name is " + EXPECTED_NAME))
-//                .inRoot(new ToastMatcher())
-//                .check(matches(isDisplayed()));
+        onView(withText("Your name is " + EXPECTED_NAME))
+                .inRoot(new ToastMatcher())
+                .check(matches(isDisplayed()));
 
     }
 

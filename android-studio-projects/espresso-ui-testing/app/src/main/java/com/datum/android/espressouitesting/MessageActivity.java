@@ -2,37 +2,34 @@ package com.datum.android.espressouitesting;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import android.content.Context;
-import android.content.DialogInterface;
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogBehavior;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.main.DialogLayout;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
 public class MessageActivity extends AppCompatActivity {
+
+    private static final int REQUEST_CODE_PICK = 16;
+    private static final int REQUEST_PHONE_CALL = 1001;
 
     Button mDialog, mLogout;
     TextView mName;
+    String name;
 
-    public MessageActivity() {
-    }
-
+    EditText mCallerNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,56 +39,18 @@ public class MessageActivity extends AppCompatActivity {
         mName = findViewById(R.id.tv_name);
 
         mDialog = findViewById(R.id.dialog);
-        mDialog.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(MessageActivity.this);
-            builder.setTitle("Enter a name");
-
-            EditText input = new EditText(MessageActivity.this);
-            input.setId(R.id.et_input);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
-
-            builder.setView(input);
-
-            builder.setPositiveButton("OK", (dialogInterface, i) -> {
-                String name = input.getText().toString();
-                mName.setText(name);
-                showToast(buildToastMessage(name));
-
-            });
-
-            final AlertDialog dialog = builder.create();
-            dialog.show();
-
-            disableDialog(dialog);
-            input.addTextChangedListener(new TextWatcher() {
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                    if (TextUtils.isEmpty(s)) disableDialog(dialog);
-                    else enableDialog(dialog);
-
-                }
-            });
-
-        });
+        mDialog.setOnClickListener(view -> getDialog());
 
         mLogout = findViewById(R.id.logout_button);
         mLogout.setOnClickListener(view -> finish());
 
-    }
 
-    public static String buildToastMessage(String name) {
+        mCallerNumber = findViewById(R.id.edit_text_caller_number);
+
+    }
+    
+
+    private String buildToastMessage(String name) {
         return "Your name is " + name;
     }
 
@@ -99,12 +58,93 @@ public class MessageActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    public void getDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MessageActivity.this);
+        builder.setTitle("Enter a name");
+
+        EditText input = new EditText(MessageActivity.this);
+        input.setId(R.id.et_input);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", (dialogInterface, i) -> {
+            name = input.getText().toString();
+            mName.setText(name);
+            showToast(buildToastMessage(name));
+
+        });
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        disableDialog(dialog);
+        input.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (TextUtils.isEmpty(s)) disableDialog(dialog);
+                else enableDialog(dialog);
+
+            }
+        });
+
+
+    }
+
     public void enableDialog(AlertDialog dialog) {
-        ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
     }
 
     public void disableDialog(AlertDialog dialog) {
-        ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
+    public void onCall(View view) {
+        boolean hasCallPhonePermission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
+
+        if (hasCallPhonePermission)
+            startActivity(createCallIntentFromNumber());
+        else
+            ActivityCompat.requestPermissions(MessageActivity.this, new String[]    {
+                    Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+    }
+
+    private Intent createCallIntentFromNumber() {
+        final Intent intentToCall = new Intent(Intent.ACTION_CALL);
+        String number = mCallerNumber.getText().toString();
+        intentToCall.setData(Uri.parse("tel:" + number));
+        return intentToCall;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_PICK) {
+            if (resultCode == RESULT_OK) {
+                mCallerNumber.setText(data.getExtras()
+                        .getString(ContactActivity.KEY_PHONE_NUMBER));
+            }
+        }
+    }
+
+
+
+    public void onPick(View view) {
+        final Intent pickContactIntent = new Intent(this, ContactActivity.class);
+        startActivityForResult(pickContactIntent, REQUEST_CODE_PICK);
+    }
 }

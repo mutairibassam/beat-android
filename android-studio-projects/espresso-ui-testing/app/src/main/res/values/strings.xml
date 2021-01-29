@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">EspressoUITesting</string>
-    <item name="et_input" type="id"/>
+    <string name="warning_call_phone_permission">This app requires \'call phone\' permission to run</string>
+    <item name="et_input" type="id" />
 </resources>

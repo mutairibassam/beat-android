@@ -19,10 +19,6 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class MessageActivityTest {
 
-//    @Rule
-//    public ActivityScenarioRule<MessageActivity> rule =
-//            new ActivityScenarioRule<>(MessageActivity.class);
-
     @Test
     public void isActivityInView() {
 
@@ -31,9 +27,9 @@ public class MessageActivityTest {
 
         onView(withId(R.id.messageActivity)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
-        onView(withId(R.id.logout_button)).check(matches(isDisplayed()));
 
-//        onView(withId(R.id.login_button)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.logout_button)).check(matches(isDisplayed())); // method 1
+//        onView(withId(R.id.login_button)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE))); // method 2
 
     }
 
@@ -46,8 +42,8 @@ public class MessageActivityTest {
         onView(withId(R.id.login_button)).perform(click());
         onView(withId(R.id.messageActivity)).check(matches(isDisplayed()));
 
-//        onView(withId(R.id.logout_button)).perform(click()); // method 1
-        pressBack(); // method 2
+        pressBack(); // method 1
+//        onView(withId(R.id.logout_button)).perform(click()); // method 2
 
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
     }

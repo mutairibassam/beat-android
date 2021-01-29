@@ -22,14 +22,11 @@ public class MainActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.et_password);
 
         mLogin = findViewById(R.id.login_button);
-        mLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
-                intent.putExtra("username", mUsername.getText().toString());
-                intent.putExtra("password", mPassword.getText().toString());
-                startActivity(intent);
-            }
+        mLogin.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
+            intent.putExtra("username", mUsername.getText().toString());
+            intent.putExtra("password", mPassword.getText().toString());
+            startActivity(intent);
         });
 
 

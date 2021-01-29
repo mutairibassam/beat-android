@@ -31,24 +31,23 @@ public class MainActivityTest {
     public ActivityScenarioRule<MainActivity> mActivityTestRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-
     @Test
     public void isActivityInView() {
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
         onView(withId(R.id.login_button)).check(matches(isDisplayed()));
 
-//        onView(withId(R.id.et_username))
-//                .perform(typeText("mutairibassam@gmail.com"));
-//        onView(withId(R.id.et_password))
-//                .perform(typeText("12345"), closeSoftKeyboard());
-//
-//
-//        onView(withId(R.id.et_username))
-//                .check(matches(withText("mutairibassam@gmail.com")));
-//        onView(withId(R.id.et_password))
-//                .check(matches(withText("12345")));
+        onView(withId(R.id.et_username))
+                .perform(typeText("mutairibassam@gmail.com"));
+        onView(withId(R.id.et_password))
+                .perform(typeText("12345"), closeSoftKeyboard());
 
-//        onView(withId(R.id.login_button)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+
+        onView(withId(R.id.et_username))
+                .check(matches(withText("mutairibassam@gmail.com")));
+        onView(withId(R.id.et_password))
+                .check(matches(withText("12345")));
+
+        onView(withId(R.id.login_button)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
 
     }
 

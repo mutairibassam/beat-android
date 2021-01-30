@@ -5,23 +5,17 @@ import android.app.Instrumentation;
 import android.content.Intent;
 
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.espresso.Espresso;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.MissingFormatArgumentException;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -39,54 +33,51 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
     private static final String EMAIL_MESSAGE = "I forgot my password";
 
-
-//    @Before
-//    public void stubAllExternalIntents() {
-//
-//    }
-//
-//    @After
-//    public void afterTesting() {
-//        Intents.release();
-//    }
-
-
     @Rule
-    public ActivityScenarioRule<MainActivity> mActivityTestRule =
+    public ActivityScenarioRule<MainActivity> rule =
             new ActivityScenarioRule<>(MainActivity.class);
+
 
     @Test
     public void isActivityInView() {
+
+//        to access the activity
+//        ActivityScenario scenario = rule.getScenario();
+
+        // Check visibility
+        onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
         onView(withId(R.id.login_button)).check(matches(isDisplayed()));
 
+        // Another way to check visibility
+//        onView(withId(R.id.login_button)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+
+    }
+
+    @Test
+    public void test_isInputTypedCorrectly() {
+
+        // Type input
         onView(withId(R.id.et_username))
                 .perform(typeText("mutairibassam@gmail.com"));
         onView(withId(R.id.et_password))
                 .perform(typeText("12345"), closeSoftKeyboard());
 
-
+        // Check input
         onView(withId(R.id.et_username))
                 .check(matches(withText("mutairibassam@gmail.com")));
         onView(withId(R.id.et_password))
                 .check(matches(withText("12345")));
-
-        onView(withId(R.id.login_button)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-
     }
 
-    @Test
-    public void test_isTitleTestDisplayed() {
-        onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
 
-    }
+    // ################ Intent ###########################
 
     @Test
     public void ClickSendEmailButton_SendsEmail() {
@@ -98,7 +89,7 @@ public class MainActivityTest {
     }
 
     @Before
-    public static void setUp() throws Exception {
+    public void setUp() throws Exception {
         Intents.init();
 
         // to block all external Intents
@@ -106,7 +97,7 @@ public class MainActivityTest {
     }
 
     @After
-    public static void afterClass() throws Exception {
+    public void afterClass() throws Exception {
         Intents.release();
     }
 

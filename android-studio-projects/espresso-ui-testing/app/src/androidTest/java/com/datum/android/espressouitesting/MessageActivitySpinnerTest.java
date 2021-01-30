@@ -23,13 +23,13 @@ public class MessageActivitySpinnerTest {
 
     @Test
     public void test_Adapter_view_simple_Test() {
+
         ActivityScenario<MessageActivity> scenario = ActivityScenario.launch(MessageActivity.class);
-
         onView(withId(R.id.spinner)).perform(click());
-
         onView(withId(R.id.spinner)).check(matches(withText(containsString("Bassam"))));
 
 //        onData(allOf(is(instanceOf(String.class)), is("Khalid"))).perform(click());
 
     }
+
 }

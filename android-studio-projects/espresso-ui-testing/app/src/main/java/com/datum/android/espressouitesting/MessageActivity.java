@@ -131,7 +131,7 @@ public class MessageActivity extends AppCompatActivity {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
-    public void onCall(@SuppressWarnings("unused") View view) {
+    public void onCall(View view) {
         boolean hasCallPhonePermission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
 

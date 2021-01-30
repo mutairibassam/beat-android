@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="names">
+        <item>Bassam</item>
+        <item>Muhammad</item>
+        <item>Khalid</item>
+        <item>Faisal</item>
+    </string-array>
+</resources>

@@ -1,10 +1,5 @@
 package com.datum.android.espressouitesting;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,10 +10,20 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import java.util.ArrayList;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -28,6 +33,8 @@ public class MessageActivity extends AppCompatActivity {
     Button mDialog, mLogout;
     TextView mName;
     String name;
+
+    Spinner spinner;
 
     EditText mCallerNumber;
 
@@ -44,11 +51,20 @@ public class MessageActivity extends AppCompatActivity {
         mLogout = findViewById(R.id.logout_button);
         mLogout.setOnClickListener(view -> finish());
 
+        spinner = findViewById(R.id.spinner);
+        getSpinnerData();
 
         mCallerNumber = findViewById(R.id.edit_text_caller_number);
 
     }
-    
+
+    private void getSpinnerData() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.names, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+    }
+
 
     private String buildToastMessage(String name) {
         return "Your name is " + name;
@@ -112,7 +128,7 @@ public class MessageActivity extends AppCompatActivity {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
-    public void onCall(View view) {
+    public void onCall(@SuppressWarnings("unused") View view) {
         boolean hasCallPhonePermission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
 
@@ -143,8 +159,9 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
-    public void onPick(View view) {
+    public void onPick(@SuppressWarnings("unused") View view) {
         final Intent pickContactIntent = new Intent(this, ContactActivity.class);
         startActivityForResult(pickContactIntent, REQUEST_CODE_PICK);
     }
+
 }

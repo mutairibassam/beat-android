@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.datum.android.espressouitesting">
 
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EspressoUITesting">
-        <activity android:name=".ContactActivity"/>
+        <activity
+            android:name=".BasicActivity"
+            android:label="@string/title_activity_basic"
+            android:theme="@style/Theme.EspressoUITesting.NoActionBar"></activity>
+        <activity android:name=".ContactActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

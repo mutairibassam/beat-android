@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
+import android.widget.HorizontalScrollView;
 
 import com.datum.android.recyclerviewapp.R;
 import com.datum.android.recyclerviewapp.oldlayout.adapter.CustomAdapter;
@@ -45,46 +46,46 @@ public class OldMainActivity extends AppCompatActivity {
 
     private void fetchMyCustomAPI() {
 
-//        myCustomList = new MyCustomTable().getData();
+        myCustomList = new MyCustomTable().getData();
 
 
-//        // Use only one
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        // Use only one
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        // create a new custom Adapter
+        customAdapter = new CustomAdapter(myCustomList);
+
+        // take the data and let the recyclerview present it
+        mRecyclerView.setAdapter(customAdapter);
+
+//        Service service = DataServiceGenerator.getRetrofit().create(Service.class);
 //
-//        // create a new custom Adapter
-//        customAdapter = new CustomAdapter(myCustomList);
+//        Call<List<MyCustomTable>> call = service.fetchMyCustomAPI();
 //
-//        // take the data and let the recyclerview present it
-//        mRecyclerView.setAdapter(customAdapter);
-
-        Service service = DataServiceGenerator.getRetrofit().create(Service.class);
-
-        Call<List<MyCustomTable>> call = service.fetchMyCustomAPI();
-
-        call.enqueue(new Callback<List<MyCustomTable>>() {
-            @Override
-            public void onResponse(Call<List<MyCustomTable>> call, Response<List<MyCustomTable>> response) {
-
-                myCustomList = response.body();
-//                myCustomList = new MyCustomTable().getData();
-
-
-                // Use only one
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-                // create a new custom Adapter
-                customAdapter = new CustomAdapter(getApplicationContext(), myCustomList);
-
-                // take the data and let the recyclerview present it
-                mRecyclerView.setAdapter(customAdapter);
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<MyCustomTable>> call, Throwable t) {
-
-            }
-        });
+//        call.enqueue(new Callback<List<MyCustomTable>>() {
+//            @Override
+//            public void onResponse(Call<List<MyCustomTable>> call, Response<List<MyCustomTable>> response) {
+//
+//                myCustomList = response.body();
+////                myCustomList = new MyCustomTable().getData();
+//
+//
+//                // Use only one
+//                mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//
+//                // create a new custom Adapter
+//                customAdapter = new CustomAdapter(getApplicationContext(), myCustomList);
+//
+//                // take the data and let the recyclerview present it
+//                mRecyclerView.setAdapter(customAdapter);
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<MyCustomTable>> call, Throwable t) {
+//
+//            }
+//        });
     }
 }

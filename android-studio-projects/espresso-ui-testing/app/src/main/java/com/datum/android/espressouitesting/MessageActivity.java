@@ -30,7 +30,7 @@ public class MessageActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_PICK = 16;
     private static final int REQUEST_PHONE_CALL = 1001;
 
-    Button mDialog, mLogout;
+    Button mDialog, mLogout, mMenu;
     TextView mName;
     String name;
 
@@ -55,6 +55,9 @@ public class MessageActivity extends AppCompatActivity {
         getSpinnerData();
 
         mCallerNumber = findViewById(R.id.edit_text_caller_number);
+
+        mMenu = findViewById(R.id.menu_button);
+        mMenu.setOnClickListener(view -> startActivity(new Intent(this, BasicActivity.class)));
 
     }
 

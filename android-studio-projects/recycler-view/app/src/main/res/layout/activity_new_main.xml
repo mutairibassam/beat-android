@@ -19,7 +19,7 @@
         android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerview2"
         android:background="@color/gray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

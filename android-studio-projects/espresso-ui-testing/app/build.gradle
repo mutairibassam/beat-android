@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -79,5 +81,7 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
 
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+
+    implementation platform('com.google.firebase:firebase-bom:26.4.0')
 }
 

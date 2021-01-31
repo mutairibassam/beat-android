@@ -28,6 +28,7 @@ public class MessageActivitySpinnerTest {
         onView(withId(R.id.spinner)).perform(click());
         onView(withId(R.id.spinner)).check(matches(withText(containsString("Bassam"))));
 
+        // we need to load the data before and we can do this by using onData()
 //        onData(allOf(is(instanceOf(String.class)), is("Khalid"))).perform(click());
 
     }

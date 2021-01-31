@@ -32,33 +32,35 @@ public class MessageActivity extends AppCompatActivity {
 
     Button mDialog, mLogout, mMenu;
     TextView mName;
+    EditText mCallerNumber;
+
     String name;
 
     Spinner spinner;
 
-    EditText mCallerNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        mName = findViewById(R.id.tv_name);
+        getInit();
 
-        mDialog = findViewById(R.id.dialog);
         mDialog.setOnClickListener(view -> getDialog());
-
-        mLogout = findViewById(R.id.logout_button);
         mLogout.setOnClickListener(view -> finish());
 
-        spinner = findViewById(R.id.spinner);
         getSpinnerData();
-
-        mCallerNumber = findViewById(R.id.edit_text_caller_number);
-
-        mMenu = findViewById(R.id.menu_button);
         mMenu.setOnClickListener(view -> startActivity(new Intent(this, BasicActivity.class)));
 
+    }
+
+    private void getInit() {
+        mName = findViewById(R.id.tv_name);
+        mDialog = findViewById(R.id.dialog);
+        mLogout = findViewById(R.id.logout_button);
+        spinner = findViewById(R.id.spinner);
+        mCallerNumber = findViewById(R.id.edit_text_caller_number);
+        mMenu = findViewById(R.id.menu_button);
     }
 
     private void getSpinnerData() {
@@ -162,7 +164,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
-    public void onPick(@SuppressWarnings("unused") View view) {
+    public void onPick(View view) {
         final Intent pickContactIntent = new Intent(this, ContactActivity.class);
         startActivityForResult(pickContactIntent, REQUEST_CODE_PICK);
     }

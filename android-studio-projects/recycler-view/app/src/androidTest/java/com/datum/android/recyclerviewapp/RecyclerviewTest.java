@@ -37,11 +37,6 @@ public class RecyclerviewTest {
     public ActivityScenarioRule<OldMainActivity> rule =
             new ActivityScenarioRule<>(OldMainActivity.class);
 
-    private final Context context = ApplicationProvider.getApplicationContext();
-    OldMainActivity getActivity = new OldMainActivity(context);
-
-
-
     @Test
     public void test_recyclerview_display() {
         onView(ViewMatchers.withId(R.id.recyclerview))
@@ -54,8 +49,6 @@ public class RecyclerviewTest {
     @Test
     public void scrollToItemBelowFold_checkItsText() {
 
-
-
         // First, scroll to the position that needs to be matched and click on it.
         onView(ViewMatchers.withId(R.id.recyclerview))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(ITEM_INDEX,
@@ -64,7 +57,9 @@ public class RecyclerviewTest {
         // Match the text in an item below the fold and check that it's displayed.
         onView(withText("mohammad@gmail.com")).check(matches(isDisplayed()));
 
-        String s = ApplicationProvider.getApplicationContext().getResources().getString(R.string.bassam);
+        // read from project resource
+//        String user_email = ApplicationProvider.getApplicationContext().getResources().getString(R.string.user_email);
+//        onView(withText(user_email)).check(matches(isDisplayed()));
 
 
     }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.HorizontalScrollView;
 
@@ -24,6 +25,12 @@ import retrofit2.Response;
 public class OldMainActivity extends AppCompatActivity {
 
     private static final String TAG = OldMainActivity.class.getSimpleName();
+
+    public OldMainActivity(Context context) {
+        this.context = context;
+    }
+
+    Context context;
 
 
     CustomAdapter customAdapter;
@@ -44,7 +51,7 @@ public class OldMainActivity extends AppCompatActivity {
 
 
 
-    private void fetchMyCustomAPI() {
+    public void fetchMyCustomAPI() {
 
         myCustomList = new MyCustomTable().getData();
 

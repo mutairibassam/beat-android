@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class BasicActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     Context context;
 

@@ -37,18 +37,20 @@ import static org.hamcrest.Matchers.not;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
-    private static final String EMAIL_MESSAGE = "I forgot my password";
+    public static final String EMAIL_MESSAGE = "I forgot my password";
+
+
+    /**
+     * @Rule provides functional testing for a specific single activity
+     *
+     */
 
     @Rule
-    public ActivityScenarioRule<MainActivity> rule =
-            new ActivityScenarioRule<>(MainActivity.class);
+    public ActivityScenarioRule<MainActivity> rule = new ActivityScenarioRule<>(MainActivity.class);
 
 
     @Test
-    public void isActivityInView() {
-
-//        to access the activity
-//        ActivityScenario scenario = rule.getScenario();
+    public void test_isActivityInView() {
 
         // Check visibility
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
@@ -76,6 +78,27 @@ public class MainActivityTest {
                 .check(matches(withText("12345")));
     }
 
+    @Test
+    public void test_login_functionality() {
+
+        onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
+        onView(withId(R.id.login_button)).check(matches(isDisplayed()));
+
+        // Type input
+        onView(withId(R.id.et_username))
+                .perform(typeText("mutairibassam@gmail.com"));
+        onView(withId(R.id.et_password))
+                .perform(typeText("12345"), closeSoftKeyboard());
+
+        onView(withId(R.id.login_button)).perform(click());
+        onView(withId(R.id.messageActivity)).check(matches(isDisplayed()));
+
+    }
+
+
+
+
 
     // ################ Intent ###########################
 
@@ -89,7 +112,7 @@ public class MainActivityTest {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void beforeTestClass() {
         Intents.init();
 
         // to block all external Intents
@@ -97,7 +120,7 @@ public class MainActivityTest {
     }
 
     @After
-    public void afterClass() throws Exception {
+    public void afterTestClass() {
         Intents.release();
     }
 

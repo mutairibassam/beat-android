@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EspressoUITesting">
         <activity
-            android:name=".BasicActivity"
+            android:name=".MenuActivity"
             android:label="@string/title_activity_basic"
             android:theme="@style/Theme.EspressoUITesting.NoActionBar"></activity>
         <activity android:name=".ContactActivity" />

@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +21,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
-import java.util.ArrayList;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -47,10 +44,12 @@ public class MessageActivity extends AppCompatActivity {
         getInit();
 
         mDialog.setOnClickListener(view -> getDialog());
-        mLogout.setOnClickListener(view -> finish());
+        mLogout.setOnClickListener(view ->
+                startActivity(new Intent(this, MainActivity.class))
+        );
 
         getSpinnerData();
-        mMenu.setOnClickListener(view -> startActivity(new Intent(this, BasicActivity.class)));
+        mMenu.setOnClickListener(view -> startActivity(new Intent(this, MenuActivity.class)));
 
     }
 

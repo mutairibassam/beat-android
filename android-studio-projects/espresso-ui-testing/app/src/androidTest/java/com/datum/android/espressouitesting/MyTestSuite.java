@@ -15,3 +15,4 @@ import org.junit.runners.Suite;
 public class MyTestSuite {
 
 }
+

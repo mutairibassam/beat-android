@@ -68,6 +68,7 @@ public class MainActivityTest {
         // Type input
         onView(withId(R.id.et_username))
                 .perform(typeText("mutairibassam@gmail.com"));
+
         onView(withId(R.id.et_password))
                 .perform(typeText("12345"), closeSoftKeyboard());
 
@@ -85,6 +86,9 @@ public class MainActivityTest {
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
         onView(withId(R.id.login_button)).check(matches(isDisplayed()));
 
+        onView(withId(R.id.et_username)).check(matches(isDisplayed()));
+        onView(withId(R.id.et_password)).check(matches(isDisplayed()));
+
         // Type input
         onView(withId(R.id.et_username))
                 .perform(typeText("mutairibassam@gmail.com"));
@@ -92,6 +96,7 @@ public class MainActivityTest {
                 .perform(typeText("12345"), closeSoftKeyboard());
 
         onView(withId(R.id.login_button)).perform(click());
+
         onView(withId(R.id.messageActivity)).check(matches(isDisplayed()));
 
     }

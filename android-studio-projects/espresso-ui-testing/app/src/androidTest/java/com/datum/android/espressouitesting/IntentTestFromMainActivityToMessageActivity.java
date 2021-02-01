@@ -66,17 +66,17 @@ public class IntentTestFromMainActivityToMessageActivity {
         Intents.release();
     }
 
-    @Test
-    public void typeNumber_ValidInput_InitiatesCall() {
-
-        onView(withId(R.id.edit_text_caller_number))
-                .perform(typeText(VALID_PHONE_NUMBER), closeSoftKeyboard());
-        onView(withId(R.id.button_call_number)).perform(click());
-
-        intended(allOf(
-                hasAction(Intent.ACTION_CALL),
-                hasData(INTENT_DATA_PHONE_NUMBER)));
-    }
+//    @Test
+//    public void typeNumber_ValidInput_InitiatesCall() {
+//
+//        onView(withId(R.id.edit_text_caller_number))
+//                .perform(typeText(VALID_PHONE_NUMBER), closeSoftKeyboard());
+//        onView(withId(R.id.button_call_number)).perform(click());
+//
+//        intended(allOf(
+//                hasAction(Intent.ACTION_CALL),
+//                hasData(INTENT_DATA_PHONE_NUMBER)));
+//    }
 
     @Test
     public void typeNumber_ValidInput_InitiatesCall_truth() {

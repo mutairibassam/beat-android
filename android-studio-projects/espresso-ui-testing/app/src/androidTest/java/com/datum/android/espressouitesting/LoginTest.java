@@ -44,16 +44,13 @@ public class LoginTest {
     @Test
     public void checkText_UsernameAndPassword() {
 
-        onView(withId(R.id.et_username))
-                .perform(typeText(email));
-        onView(withId(R.id.et_password))
-                .perform(typeText(password), closeSoftKeyboard());
+
+        onView(withId(R.id.et_username)).perform(typeText(email));
+        onView(withId(R.id.et_password)).perform(typeText(password), closeSoftKeyboard());
 
 
-        onView(withId(R.id.et_username))
-                .check(matches(withText(email)));
-        onView(withId(R.id.et_password))
-                .check(matches(withText(password)));
+        onView(withId(R.id.et_username)).check(matches(withText(email)));
+        onView(withId(R.id.et_password)).check(matches(withText(password)));
 
         // Button
          onView(withId(R.id.login_button)).perform(click());

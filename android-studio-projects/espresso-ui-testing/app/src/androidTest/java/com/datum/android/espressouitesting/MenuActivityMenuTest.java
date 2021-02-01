@@ -3,7 +3,10 @@ package com.datum.android.espressouitesting;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.uiautomator.UiDevice;
+import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObjectNotFoundException;
+import androidx.test.uiautomator.UiSelector;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +17,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 @RunWith(AndroidJUnit4.class)
 public class MenuActivityMenuTest {
@@ -25,7 +29,7 @@ public class MenuActivityMenuTest {
         openActionBarOverflowOrOptionsMenu(
                 ApplicationProvider.getApplicationContext());
 
-        // Click the item.
+//        // Click the item.
         onView(withText("save")).perform(click());
         onView(withText("This item has been saved")).check(matches(isDisplayed()));
 

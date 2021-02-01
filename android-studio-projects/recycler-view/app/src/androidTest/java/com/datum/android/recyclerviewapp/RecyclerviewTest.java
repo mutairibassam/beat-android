@@ -33,6 +33,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 public class RecyclerviewTest {
 
     private static final int ITEM_INDEX = 1;
+
     @Rule
     public ActivityScenarioRule<OldMainActivity> rule =
             new ActivityScenarioRule<>(OldMainActivity.class);
@@ -40,6 +41,7 @@ public class RecyclerviewTest {
     @Test
     public void test_recyclerview_display() {
         onView(ViewMatchers.withId(R.id.recyclerview))
+
                 .perform(RecyclerViewActions.scrollTo(
                         hasDescendant(withText("bassam"))
                 ));

@@ -6,17 +6,14 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 
 import com.datum.android.backgroundprocesses.databinding.ActivityWithoutAsyncTaskBinding;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.stream.Stream;
 
 public class WithoutAsyncTask extends AppCompatActivity {
 
@@ -35,29 +32,55 @@ public class WithoutAsyncTask extends AppCompatActivity {
 
             // onPreExecute() method
             binding.getButton.setText("Loading...");
-            someDelay();
 
-            doInBackground();
+            mainThread();
+            threadOne();
+            threadTwo();
 
         });
 
     }
 
-    private void doInBackground() {
+    private void mainThread() {
+
+        WithoutAsyncTask.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                binding.tvMainStatus.setText("started!");
+                new CountDownTimer(10000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                        binding.tvResponse.setText("main timer - seconds remaining: " + millisUntilFinished / 1000);
+                    }
+
+                    public void onFinish() {
+                        binding.tvMainStatus.setText("completed!");
+                    }
+                }.start();
+            }
+        });
+
+    }
+
+    private void threadTwo() {
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 // doInBackground() method
                 String url = "https://www.json-generator.com/api/json/get/cgcifjsyIy?indent=2";
                 myString = getSiteString(url);
 
+                // will crash the app, since it's required to update the UI
+                // and it's executed on background thread
+//                binding.tvThreadTwoStatus.setText("started");
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         // onPostExecute() method
                         binding.getButton.setText("Received Response");
                         binding.tvResponse.setText(myString);
+                        binding.tvThreadTwoStatus.setText("completed");
                     }
                 });
             }
@@ -67,6 +90,8 @@ public class WithoutAsyncTask extends AppCompatActivity {
 
     private String getSiteString(String site) {
         String stream = "";
+        binding.tvThreadTwoStatus.setText("started");
+
 
         try {
             URL url = new URL(site);
@@ -90,7 +115,7 @@ public class WithoutAsyncTask extends AppCompatActivity {
         return stream;
     }
 
-    private void someDelay() {
+    private void threadOne() {
 
         new Thread(new Runnable() {
             @Override
@@ -98,13 +123,14 @@ public class WithoutAsyncTask extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        binding.tvThreadOneStatus.setText("started");
                         new CountDownTimer(15000, 1000) {
                             public void onTick(long millisUntilFinished) {
                                 binding.tvResponse.setText("seconds remaining: " + millisUntilFinished / 1000);
                             }
 
                             public void onFinish() {
-                                binding.tvResponse.setText("done!");
+                                binding.tvThreadOneStatus.setText("completed");
                             }
                         }.start();
                     }
@@ -115,5 +141,7 @@ public class WithoutAsyncTask extends AppCompatActivity {
 
 
     }
+
+
 
 }

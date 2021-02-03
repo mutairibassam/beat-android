@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WithoutAsyncTaskExample">
+
+    <TextView
+        android:id="@+id/tv_title_without_asyncTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Without AsyncTask"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/thread_one_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Kabsa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_without_asyncTask" />
+
+    <TextView
+        android:id="@+id/tv_thread_one_without"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/thread_one_button"
+        app:layout_constraintStart_toEndOf="@+id/thread_one_button"
+        app:layout_constraintTop_toTopOf="@+id/thread_one_button" />
+
+    <Button
+        android:id="@+id/thread_two_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Sweet"
+        app:layout_constraintStart_toStartOf="@+id/thread_one_button"
+        app:layout_constraintTop_toBottomOf="@+id/thread_one_button" />
+
+    <TextView
+        android:id="@+id/tv_thread_two_without"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/thread_two_button"
+        app:layout_constraintStart_toEndOf="@+id/thread_two_button"
+        app:layout_constraintTop_toTopOf="@+id/thread_two_button" />
+
+    <Button
+        android:id="@+id/thread_three_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Dounts"
+        app:layout_constraintStart_toStartOf="@+id/thread_two_button"
+        app:layout_constraintTop_toBottomOf="@+id/thread_two_button" />
+
+    <TextView
+        android:id="@+id/tv_thread_three_without"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/thread_three_button"
+        app:layout_constraintStart_toEndOf="@+id/thread_three_button"
+        app:layout_constraintTop_toTopOf="@+id/thread_three_button" />
+
+    <Button
+        android:id="@+id/block_main_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="block the main thread"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thread_three_button" />
+
+    <TextView
+        android:id="@+id/tv_shared"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Shared textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/block_main_button" />
+
+    <TextView
+        android:id="@+id/tv_status_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="Status"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_thread_one_without"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_thread_one_without" />
+
+    <TextView
+        android:id="@+id/tv_status_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="status"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_thread_two_without"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_thread_two_without" />
+
+    <TextView
+        android:id="@+id/tv_status_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="status"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_thread_three_without"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_thread_three_without" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

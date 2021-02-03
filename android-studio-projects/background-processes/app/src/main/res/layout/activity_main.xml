@@ -10,10 +10,32 @@
         android:id="@+id/without_asynctask_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:text="Without AsyncTask"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/asyncTask_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="with asynctask"
+        app:layout_constraintEnd_toEndOf="@+id/without_asynctask_button"
+        app:layout_constraintStart_toStartOf="@+id/without_asynctask_button"
+        app:layout_constraintTop_toBottomOf="@+id/without_asynctask_button" />
+
+    <Button
+        android:id="@+id/download_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Without AsyncTask Download"
+        app:layout_constraintEnd_toEndOf="@+id/asyncTask_button"
+        app:layout_constraintStart_toStartOf="@+id/asyncTask_button"
+        app:layout_constraintTop_toBottomOf="@+id/asyncTask_button" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

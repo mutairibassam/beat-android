@@ -35,61 +35,42 @@ public class WithoutAsyncTaskExample extends AppCompatActivity {
         });
 
         binding.threadOneButton.setOnClickListener(View -> {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
 
+            new Thread(() -> runOnUiThread(() -> {
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            binding.tvStatusOne.setText("Started Execution!");
+                binding.tvStatusOne.setText("Started Execution!");
 //                            binding.tvShared.setText("Thread one is executing!");
-                            tvShared("Thread one is executing");
-                            new CountDownTimer(75000, 1000) {
-                                public void onTick(long millisUntilFinished) {
-                                    binding.tvThreadOneWithout.setText("" + millisUntilFinished / 1000);
-                                }
+                tvShared("Thread one is executing");
+                new CountDownTimer(75000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                        binding.tvThreadOneWithout.setText("" + millisUntilFinished / 1000);
+                    }
 
-                                public void onFinish() {
-                                    binding.tvStatusOne.setText("completed!");
-                                }
-                            }.start();
+                    public void onFinish() {
+                        binding.tvStatusOne.setText("completed!");
+                    }
+                }.start();
 
-                        }
-                    });
-
-                }
-            }).start();
+            })).start();
         });
 
 
         binding.threadTwoButton.setOnClickListener(View -> {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
+            new Thread(() -> runOnUiThread(() -> {
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            binding.tvStatusTwo.setText("Started Execution!");
+                binding.tvStatusTwo.setText("Started Execution!");
 //                            binding.tvShared.setText("Thread two is executing!");
-                            tvShared("Thread two is executing");
-                            new CountDownTimer(50000, 1000) {
-                                public void onTick(long millisUntilFinished) {
-                                    binding.tvThreadTwoWithout.setText("" + millisUntilFinished / 1000);
-                                }
+                tvShared("Thread two is executing");
+                new CountDownTimer(50000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                        binding.tvThreadTwoWithout.setText("" + millisUntilFinished / 1000);
+                    }
 
-                                public void onFinish() {
-                                    binding.tvStatusTwo.setText("completed!");
-                                }
-                            }.start();
-                        }
-                    });
-                }
-            }).start();
+                    public void onFinish() {
+                        binding.tvStatusTwo.setText("completed!");
+                    }
+                }.start();
+            })).start();
         });
 
         binding.threadThreeButton.setOnClickListener(View -> {
@@ -97,9 +78,15 @@ public class WithoutAsyncTaskExample extends AppCompatActivity {
                 @Override
                 public void run() {
 
+
+                    // Background
+
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+
+                            // main
 
                             binding.tvStatusThree.setText("Started Execution!");
 //                            binding.tvShared.setText("Thread three is executing!");

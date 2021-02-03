@@ -33,45 +33,34 @@ public class WithoutAsyncTaskDownloadExample extends AppCompatActivity {
         binding.textView2.setVisibility(View.GONE);
 
         button.setOnClickListener(View -> {
+
             pg.setProgress(0);
             tv.setText(pg.getProgress() + "/" + 100);
             tv.setVisibility(android.view.View.VISIBLE);
             pg.setVisibility(android.view.View.VISIBLE);
             button.setText("Loading...");
 
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 10; i++) {
+            Thread thread = new Thread(() -> {
+                for (int i = 0; i < 10; i++) {
 
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-
-                                pg.incrementProgressBy(10);
-                                tv.setText(pg.getProgress() + "/" + 100);
-                            }
-                        });
-
-
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
 
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            button.setText("Execute");
-                            tv.setText(pg.getProgress() + "/" + 100);
-                        }
+                    runOnUiThread(() -> {
+                        pg.incrementProgressBy(10);
+                        tv.setText(pg.getProgress() + "/" + 100);
                     });
+
+
                 }
+
+                runOnUiThread(() -> {
+                    button.setText("Execute");
+                    tv.setText(pg.getProgress() + "/" + 100);
+                });
             });
 
             thread.start();

@@ -42,6 +42,8 @@ public class AsyncTaskExample extends AppCompatActivity {
 
 
         binding.button2.setOnClickListener(View -> {
+
+
             binding.button2.setText("Loading...");
             pg.setProgress(0);
             tv.setText(binding.progressBar.getProgress() + "/" + 100);
@@ -49,8 +51,8 @@ public class AsyncTaskExample extends AppCompatActivity {
             runningTask.execute();
 
         });
-    }
 
+    }
 
     class TestAsync extends AsyncTask<String, Integer, Void> {
 
@@ -73,6 +75,7 @@ public class AsyncTaskExample extends AppCompatActivity {
 
                 publishProgress();
 //                publishProgress(10);
+
             }
 
             return null;
@@ -84,7 +87,6 @@ public class AsyncTaskExample extends AppCompatActivity {
             binding.progressBar.incrementProgressBy(10);
 //            binding.progressBar.incrementProgressBy(a[0]);
 
-
             binding.textView2.setText(binding.progressBar.getProgress() + "/" + 100);
 
         }
@@ -95,5 +97,4 @@ public class AsyncTaskExample extends AppCompatActivity {
         }
 
     }
-
 }

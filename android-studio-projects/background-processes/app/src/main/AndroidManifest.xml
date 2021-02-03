@@ -12,10 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BackgroundProcesses">
-        <activity android:name=".WithoutAsyncTaskDownloadExample"></activity>
-        <activity android:name=".HandlerExample"></activity>
-        <activity android:name=".WithoutAsyncTaskExample"></activity>
-        <activity android:name=".AsyncTaskExample"></activity>
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".WithoutAsyncTaskDownloadExample" />
+        <activity android:name=".WithoutAsyncTaskExample" />
+        <activity android:name=".AsyncTaskExample" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

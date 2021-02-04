@@ -8,7 +8,7 @@
     tools:context=".Launcher">
 
     <EditText
-        android:id="@+id/et_name"
+        android:id="@+id/et_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -47,9 +47,9 @@
         android:inputType="textPassword"
         android:padding="16dp"
         android:drawableStart="@drawable/ic_baseline_lock_24"
-        app:layout_constraintEnd_toEndOf="@+id/et_name"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        app:layout_constraintEnd_toEndOf="@+id/et_email"
+        app:layout_constraintStart_toStartOf="@+id/et_email"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <TextView
         android:id="@+id/textView2"

@@ -44,10 +44,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<String> skills = new ArrayList<>();
 
     boolean isMale = true;
-    String sName, sEmail, sMobile, sJobTitle, sDay, sTime;
+    String sName, sEmail, sMobile, sJobTitle, sDay, sTime, email;
 
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences_profile;
+    SharedPreferences.Editor editor_profile;
+
+    SharedPreferences sharedPreferences_users;
+    SharedPreferences.Editor editor_users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mSave = findViewById(R.id.btn_save);
 
+        fetchUserName();
         hideViews();
         getSpinnerData();
     }
@@ -143,21 +147,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void storeOnSharedPreferences() {
-        sp = getSharedPreferences(GlobalConstants.PROFILE, MODE_PRIVATE);
-        editor = sp.edit();
+        sharedPreferences_profile = getSharedPreferences(GlobalConstants.PROFILE, MODE_PRIVATE);
+        editor_profile = sharedPreferences_profile.edit();
 
-        editor.putString(GlobalConstants.USERNAME, sName);
-        editor.putString(GlobalConstants.USER_EMAIL, sEmail);
-        editor.putBoolean(GlobalConstants.GENDER, isMale);
-        editor.putString(GlobalConstants.MOBILE, sMobile);
-        editor.putString(GlobalConstants.JOB_TITLE, sJobTitle);
+        editor_profile.putString(GlobalConstants.USERNAME, sName);
+        editor_profile.putString(GlobalConstants.USER_EMAIL, sEmail);
+        editor_profile.putBoolean(GlobalConstants.GENDER, isMale);
+        editor_profile.putString(GlobalConstants.MOBILE, sMobile);
+        editor_profile.putString(GlobalConstants.JOB_TITLE, sJobTitle);
 
-        editor.putString(GlobalConstants.DAY, sDay);
-        editor.putString(GlobalConstants.TIME, sTime);
+        editor_profile.putString(GlobalConstants.DAY, sDay);
+        editor_profile.putString(GlobalConstants.TIME, sTime);
 
         //GlobalConstants.SKILLS, skills);
         Util.setArrayPrefs(GlobalConstants.SKILLS, skills, MainActivity.this);
-        editor.apply();
+        editor_profile.apply();
+
+    }
+
+    private void fetchUserName() {
+
+        sharedPreferences_users = getSharedPreferences(GlobalConstants.USERS, MODE_PRIVATE);
+        email = sharedPreferences_users.getString(GlobalConstants.USER_EMAIL, "Guest");
+
+        mEmail.setText(email);
 
     }
 

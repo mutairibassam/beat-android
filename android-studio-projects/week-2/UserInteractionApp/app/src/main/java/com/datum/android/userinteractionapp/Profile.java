@@ -22,8 +22,10 @@ public class Profile extends AppCompatActivity {
     boolean isMale;
     ArrayList<String> skills = new ArrayList<>();
 
+
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +79,6 @@ public class Profile extends AppCompatActivity {
         sp = getSharedPreferences(GlobalConstants.PROFILE, MODE_PRIVATE);
         // read only that related to this activity, and the name will be the same name of the activity itself
 //        sp = getPreferences(MODE_PRIVATE);
-
-
 
     }
 

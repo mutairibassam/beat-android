@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ import com.datum.android.userinteractionapp.pickers.DatePickerFragment;
 import com.datum.android.userinteractionapp.pickers.TimePickerFragment;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener,
         AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Spinner mSpinnerDay, mSpinnerTime;
     RadioGroup mRadioGroup;
     RadioButton mMale, mFemale;
-    Button mSave;
+    Button mSave, date, time;
     SeekBar seekBar;
     TextView textView;
 
@@ -43,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     boolean isMale = true;
     String sName, sEmail, sMobile, sJobTitle, sDay, sTime;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFemale = findViewById(R.id.radioFemale);
         seekBar = findViewById(R.id.seekBar);
         textView = findViewById(R.id.textView);
+        date = findViewById(R.id.button);
+        time = findViewById(R.id.button2);
 
         mSave = findViewById(R.id.btn_save);
 
@@ -102,6 +109,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void hideViews() {
         mMobile.setVisibility(View.GONE);
         mJobTitle.setVisibility(View.GONE);
+        date.setVisibility(View.GONE);
+        time.setVisibility(View.GONE);
+
     }
 
     private void getData() {
@@ -132,6 +142,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void storeOnSharedPreferences() {
+        sp = getSharedPreferences(GlobalConstants.PROFILE, MODE_PRIVATE);
+        editor = sp.edit();
+
+        editor.putString(GlobalConstants.USERNAME, sName);
+        editor.putString(GlobalConstants.USER_EMAIL, sEmail);
+        editor.putBoolean(GlobalConstants.GENDER, isMale);
+        editor.putString(GlobalConstants.MOBILE, sMobile);
+        editor.putString(GlobalConstants.JOB_TITLE, sJobTitle);
+
+        editor.putString(GlobalConstants.DAY, sDay);
+        editor.putString(GlobalConstants.TIME, sTime);
+
+        //GlobalConstants.SKILLS, skills);
+        Util.setArrayPrefs(GlobalConstants.SKILLS, skills, MainActivity.this);
+        editor.apply();
+
+    }
+
     private void navigate() {
         if(sName.equals("")) {
             Toast.makeText(this, "Please fill your name", Toast.LENGTH_LONG).show();
@@ -149,15 +178,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+        storeOnSharedPreferences();
+
         Intent intent = new Intent(this, Profile.class);
-        intent.putExtra(GlobalConstants.USERNAME, sName);
-        intent.putExtra(GlobalConstants.USER_EMAIL, sEmail);
-        intent.putExtra(GlobalConstants.GENDER, isMale);
-        intent.putExtra(GlobalConstants.MOBILE, sMobile);
-        intent.putExtra(GlobalConstants.JOB_TITLE, sJobTitle);
-        intent.putStringArrayListExtra(GlobalConstants.SKILLS, skills);
-        intent.putExtra(GlobalConstants.DAY, sDay);
-        intent.putExtra(GlobalConstants.TIME, sTime);
+//        intent.putExtra(GlobalConstants.USERNAME, sName);
+//        intent.putExtra(GlobalConstants.USER_EMAIL, sEmail);
+//        intent.putExtra(GlobalConstants.GENDER, isMale);
+//        intent.putExtra(GlobalConstants.MOBILE, sMobile);
+//        intent.putExtra(GlobalConstants.JOB_TITLE, sJobTitle);
+//        intent.putStringArrayListExtra(GlobalConstants.SKILLS, skills);
+//        intent.putExtra(GlobalConstants.DAY, sDay);
+//        intent.putExtra(GlobalConstants.TIME, sTime);
         startActivity(intent);
     }
 

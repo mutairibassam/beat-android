@@ -1,5 +1,10 @@
 package com.datum.android.userinteractionapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import java.util.ArrayList;
+
 public class GlobalConstants {
 
     public static final String USERNAME = "USERNAME";
@@ -10,5 +15,6 @@ public class GlobalConstants {
     public static final String SKILLS = "SKILLS";
     public static final String DAY = "DAY";
     public static final String TIME = "TIME";
+    public static final String PROFILE = "PROFILE";
 
 }

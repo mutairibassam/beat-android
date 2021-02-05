@@ -77,8 +77,23 @@ public class Profile extends AppCompatActivity {
     public void fetchData() {
         // Application level
         sp = getSharedPreferences(GlobalConstants.PROFILE, MODE_PRIVATE);
+
         // read only that related to this activity, and the name will be the same name of the activity itself
-//        sp = getPreferences(MODE_PRIVATE);
+        // sp = getPreferences(MODE_PRIVATE);
+
+        sName = sp.getString(GlobalConstants.USERNAME, "Guest");
+        sEmail =sp.getString(GlobalConstants.USER_EMAIL, "No Email");
+        isMale =sp.getBoolean(GlobalConstants.GENDER, true);
+        sJobTitle = sp.getString(GlobalConstants.JOB_TITLE, "Empty");
+        sMobile =sp.getString(GlobalConstants.MOBILE, "Empty");
+
+        sDay =sp.getString(GlobalConstants.DAY, "Empty");
+        sTime =sp.getString(GlobalConstants.TIME, "Empty");
+
+        skills = Util.getArrayPrefs(GlobalConstants.SKILLS, Profile.this);
+
+        prepareLayout();
+        setValues();
 
     }
 
@@ -86,24 +101,27 @@ public class Profile extends AppCompatActivity {
         if(sMobile.equals(""))  {
             mMobile.setVisibility(View.GONE);
             txtMobile.setVisibility(View.GONE);
-        } else {
-            mMobile.setVisibility(View.VISIBLE);
-            txtMobile.setVisibility(View.VISIBLE);
         }
+//        else {
+//            mMobile.setVisibility(View.VISIBLE);
+//            txtMobile.setVisibility(View.VISIBLE);
+//        }
         if(sJobTitle.equals("")) {
             mJobTitle.setVisibility(View.GONE);
             txtJobtitle.setVisibility(View.GONE);
-        } else {
-            mJobTitle.setVisibility(View.VISIBLE);
-            txtJobtitle.setVisibility(View.VISIBLE);
         }
+//        else {
+//            mJobTitle.setVisibility(View.VISIBLE);
+//            txtJobtitle.setVisibility(View.VISIBLE);
+//        }
         if(skills.size() == 0) {
             mSkills.setVisibility(View.GONE);
             txtSkills.setVisibility(View.GONE);
-        } else {
-            mSkills.setVisibility(View.VISIBLE);
-            txtSkills.setVisibility(View.VISIBLE);
         }
+//        else {
+//            mSkills.setVisibility(View.VISIBLE);
+//            txtSkills.setVisibility(View.VISIBLE);
+//        }
 
     }
 

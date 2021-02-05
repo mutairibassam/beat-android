@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.datum.android.userinteractionapp.databinding.ActivityLauncherBinding;
 
-public class Launcher extends AppCompatActivity implements View.OnClickListener {
+public class Launcher extends AppCompatActivity {
 
     private static final String TAG = Launcher.class.getSimpleName();
 
@@ -36,7 +36,10 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
             navigate();
         });
 
-        binding.loginButton.setOnClickListener(this);
+        binding.loginButton.setOnClickListener(View -> {
+            isGuest = false;
+            getData();
+        });
     }
 
 
@@ -56,13 +59,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         editor.putString(GlobalConstants.USER_EMAIL, mUsermail);
         editor.apply();
         navigate();
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        isGuest = false;
-        getData();
     }
 
     public void navigate() {

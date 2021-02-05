@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean isGuest = bundle.getBoolean(GlobalConstants.GUEST);
 
         if(isGuest) {
-            mEmail.setText(R.string.guest);
+            mName.setText(R.string.guest);
         }
         else {
             sharedPreferences_users = getSharedPreferences(GlobalConstants.USERS, MODE_PRIVATE);

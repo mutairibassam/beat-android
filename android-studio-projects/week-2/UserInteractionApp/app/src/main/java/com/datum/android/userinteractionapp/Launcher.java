@@ -61,6 +61,7 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
+        isGuest = false;
         getData();
     }
 

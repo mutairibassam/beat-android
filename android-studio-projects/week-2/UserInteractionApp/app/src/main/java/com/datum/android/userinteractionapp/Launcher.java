@@ -22,6 +22,7 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     SharedPreferences.Editor editor;
 
     String mUsermail, mPassword;
+    boolean isGuest = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,10 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.tvGuest.setOnClickListener(View -> navigate());
+        binding.tvGuest.setOnClickListener(View -> {
+            isGuest = true;
+            navigate();
+        });
 
         binding.loginButton.setOnClickListener(this);
     }
@@ -61,6 +65,12 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void navigate() {
-        startActivity(new Intent(Launcher.this, MainActivity.class));
+
+        Intent intent = new Intent(this, MainActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(GlobalConstants.GUEST, isGuest);
+        intent.putExtras(bundle);
+//        intent.putExtra(GlobalConstants.GUEST,isGuest);
+        startActivity(intent);
     }
 }

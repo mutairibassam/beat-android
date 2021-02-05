@@ -167,11 +167,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void fetchUserName() {
 
-        sharedPreferences_users = getSharedPreferences(GlobalConstants.USERS, MODE_PRIVATE);
-        email = sharedPreferences_users.getString(GlobalConstants.USER_EMAIL, "Guest");
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        boolean isGuest = bundle.getBoolean(GlobalConstants.GUEST);
 
-        mEmail.setText(email);
+        if(isGuest) {
+            mEmail.setText(R.string.guest);
+        }
+        else {
+            sharedPreferences_users = getSharedPreferences(GlobalConstants.USERS, MODE_PRIVATE);
+            email = sharedPreferences_users.getString(GlobalConstants.USER_EMAIL, "Guest");
 
+            mEmail.setText(email);
+
+        }
     }
 
     private void navigate() {

@@ -36,8 +36,7 @@
     <string name="day">Day:</string>
     <string name="time">Time:</string>
     <string name="save">Save</string>
-
-
+    <string name="guest">Guest</string>
 
 
     <string-array name="time">

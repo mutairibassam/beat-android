@@ -12,5 +12,6 @@ public class GlobalConstants {
     public static final String TIME = "TIME";
     public static final String PROFILE = "PROFILE";
     public static final String USERS = "USERS";
+    public static final String GUEST = "GUEST";
 
 }

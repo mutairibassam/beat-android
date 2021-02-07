@@ -30,7 +30,10 @@ public class InternalStorage extends AppCompatActivity {
         setContentView(view);
 
 
-
+        binding.deleteButton.setOnClickListener(View -> {
+            deleteFile(FILE_NAME);
+            binding.tvMemo.setText("");
+        });
 
         binding.newMemoButton.setOnClickListener(View -> {
 
@@ -49,11 +52,7 @@ public class InternalStorage extends AppCompatActivity {
 
         });
 
-        binding.previousMemoButton.setOnClickListener(View -> {
-
-            showMemo();
-
-        });
+        binding.previousMemoButton.setOnClickListener(View -> showMemo());
 
     }
 

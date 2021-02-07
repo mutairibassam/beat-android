@@ -97,5 +97,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, InternalStorage.class));
         });
 
+        binding.externalButton.setOnClickListener(View -> {
+            startActivity(new Intent(MainActivity.this, ExternalStorage.class));
+        });
+
     }
 }

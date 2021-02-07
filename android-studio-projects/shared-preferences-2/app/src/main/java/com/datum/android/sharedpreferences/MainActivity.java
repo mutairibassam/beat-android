@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
-    ArrayList<String> arr = new ArrayList<>();
-
     private SharedPreferences.OnSharedPreferenceChangeListener listner;
 
     @Override
@@ -39,40 +37,10 @@ public class MainActivity extends AppCompatActivity {
             String email = binding.etEmail.getText().toString();
 
             sharedPref = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
+            editor = sharedPref.edit();
 
-//            sharedPref.registerOnSharedPreferenceChangeListener(
-//                    new SharedPreferences.OnSharedPreferenceChangeListener() {
-//                        public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-//                            // Implementation
-//                        }
-//                    });
-
-
-            listner = new SharedPreferences.OnSharedPreferenceChangeListener() {
-                @Override
-                public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-                    //implementation goes here
-                }
-            };
-
-            sharedPref.registerOnSharedPreferenceChangeListener(listner);
-
-
-            arr.add(name);
-            arr.add(email);
-
-//            if(sharedPref.getAll().size() == 0) {
-//                editor.putString(KEY_NAME, name);
-//                editor.putString(KEY_EMAIL, email);
-//            } else {
-//                for (int i = 0; i < sharedPref.getAll().size(); i++) {
-//                    editor.putString(KEY_NAME + i, name);
-//                    editor.putString(KEY_EMAIL + i, email);
-//                }
-//            }
-
-
+            editor.putString(KEY_NAME, name);
+            editor.putString(KEY_EMAIL, email);
             editor.apply();
 
             binding.etName.setText("");
@@ -83,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
         binding.restoreButton.setOnClickListener(View -> {
             sharedPref = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
 
-//            String name = sharedPref.getString(KEY_NAME, "Empty");
-//            String email = sharedPref.getString(KEY_EMAIL, "Empty");
-//
-//            binding.tvData.setText(name + " " + email);
+            String name = sharedPref.getString(KEY_NAME, "Empty");
+            String email = sharedPref.getString(KEY_EMAIL, "Empty");
+
+            binding.tvData.setText(name + " " + email);
 
 
 
@@ -99,22 +67,20 @@ public class MainActivity extends AppCompatActivity {
              *
              */
 
-            Map<String, ?> all = sharedPref.getAll();
-            ArrayList<String> list = new ArrayList<>();
-            for(Map.Entry<String, ?> entry : all.entrySet()) {
-                list.add(entry.getValue().toString());
-            }
-
-            binding.tvData.setText(list.toString());
+//            Map<String, ?> all = sharedPref.getAll();
+//            ArrayList<String> list = new ArrayList<>();
+//            for(Map.Entry<String, ?> entry : all.entrySet()) {
+//                list.add(entry.getValue().toString());
+//            }
+//
+//            binding.tvData.setText(list.toString());
 
 
         });
 
-
-
         binding.clearButton.setOnClickListener(View -> {
             editor = sharedPref.edit();
-            editor.remove(KEY_NAME);      // remove specific key
+//            editor.remove(KEY_NAME);      // remove specific key
             editor.clear();               // remove all keys
             editor.apply();              // commit the changes to be implemented
         });

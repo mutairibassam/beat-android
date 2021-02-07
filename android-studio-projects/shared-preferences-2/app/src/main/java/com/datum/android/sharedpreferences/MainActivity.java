@@ -2,6 +2,7 @@ package com.datum.android.sharedpreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -83,6 +84,17 @@ public class MainActivity extends AppCompatActivity {
 //            editor.remove(KEY_NAME);      // remove specific key
             editor.clear();               // remove all keys
             editor.apply();              // commit the changes to be implemented
+        });
+
+
+
+
+
+
+
+
+        binding.internalStorageButton.setOnClickListener(View -> {
+            startActivity(new Intent(MainActivity.this, InternalStorage.class));
         });
 
     }

@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.datum.android.userinteractionapp.databinding.ActivityLauncherBinding;
 
-public class Launcher extends AppCompatActivity {
+public class Launcher extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = Launcher.class.getSimpleName();
 
@@ -22,7 +22,11 @@ public class Launcher extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     String mUsermail, mPassword;
+
+    boolean isRememberClicked;
     boolean isGuest = false;
+
+    CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class Launcher extends AppCompatActivity {
         binding = ActivityLauncherBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        getInit();
 
         binding.tvGuest.setOnClickListener(View -> {
             isGuest = true;
@@ -42,6 +48,40 @@ public class Launcher extends AppCompatActivity {
         });
     }
 
+    private void getInit() {
+
+        checkBox = findViewById(R.id.checkBox);
+        checkBox.setOnCheckedChangeListener(this);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(isRememberClicked) {
+            sharedPreferences = getSharedPreferences("remember_me", MODE_PRIVATE);
+            editor = sharedPreferences.edit();
+
+            String username =  binding.etEmail.getText().toString();
+            editor.putString("USER_NAME", username);
+            editor.putBoolean(GlobalConstants.REMEMBER_ME, isRememberClicked);
+            editor.apply();
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        sharedPreferences = getSharedPreferences("remember_me", MODE_PRIVATE);
+        String username = sharedPreferences.getString("USER_NAME", "");
+        boolean isClicked = sharedPreferences.getBoolean(GlobalConstants.REMEMBER_ME, false);
+        checkBox.setChecked(isClicked);
+
+        binding.etEmail.setText(username);
+    }
 
     private void getData() {
         mUsermail = binding.etEmail.getText().toString();
@@ -57,6 +97,7 @@ public class Launcher extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(GlobalConstants.USERS, MODE_PRIVATE);
         editor = sharedPreferences.edit();
         editor.putString(GlobalConstants.USER_EMAIL, mUsermail);
+        editor.putBoolean(GlobalConstants.REMEMBER_ME, isRememberClicked);
         editor.apply();
         navigate();
     }
@@ -69,5 +110,19 @@ public class Launcher extends AppCompatActivity {
         intent.putExtras(bundle);
 //        intent.putExtra(GlobalConstants.GUEST,isGuest);
         startActivity(intent);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        if (compoundButton.getId() == R.id.checkBox) {
+            if (isChecked) {
+                isRememberClicked = true;
+            } else {
+                isRememberClicked = false;
+                editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+            }
+        }
     }
 }

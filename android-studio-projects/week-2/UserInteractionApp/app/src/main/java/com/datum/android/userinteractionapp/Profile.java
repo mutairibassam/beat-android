@@ -102,26 +102,16 @@ public class Profile extends AppCompatActivity {
             mMobile.setVisibility(View.GONE);
             txtMobile.setVisibility(View.GONE);
         }
-//        else {
-//            mMobile.setVisibility(View.VISIBLE);
-//            txtMobile.setVisibility(View.VISIBLE);
-//        }
+
         if(sJobTitle.equals("")) {
             mJobTitle.setVisibility(View.GONE);
             txtJobtitle.setVisibility(View.GONE);
         }
-//        else {
-//            mJobTitle.setVisibility(View.VISIBLE);
-//            txtJobtitle.setVisibility(View.VISIBLE);
-//        }
+
         if(skills.size() == 0) {
             mSkills.setVisibility(View.GONE);
             txtSkills.setVisibility(View.GONE);
         }
-//        else {
-//            mSkills.setVisibility(View.VISIBLE);
-//            txtSkills.setVisibility(View.VISIBLE);
-//        }
 
     }
 

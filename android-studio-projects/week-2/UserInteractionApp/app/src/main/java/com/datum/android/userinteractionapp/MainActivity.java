@@ -203,14 +203,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         storeOnSharedPreferences();
 
         Intent intent = new Intent(this, Profile.class);
-//        intent.putExtra(GlobalConstants.USERNAME, sName);
-//        intent.putExtra(GlobalConstants.USER_EMAIL, sEmail);
-//        intent.putExtra(GlobalConstants.GENDER, isMale);
-//        intent.putExtra(GlobalConstants.MOBILE, sMobile);
-//        intent.putExtra(GlobalConstants.JOB_TITLE, sJobTitle);
-//        intent.putStringArrayListExtra(GlobalConstants.SKILLS, skills);
-//        intent.putExtra(GlobalConstants.DAY, sDay);
-//        intent.putExtra(GlobalConstants.TIME, sTime);
+        intent.putExtra(GlobalConstants.USERNAME, sName);
+        intent.putExtra(GlobalConstants.USER_EMAIL, sEmail);
+        intent.putExtra(GlobalConstants.GENDER, isMale);
+        intent.putExtra(GlobalConstants.MOBILE, sMobile);
+        intent.putExtra(GlobalConstants.JOB_TITLE, sJobTitle);
+        intent.putStringArrayListExtra(GlobalConstants.SKILLS, skills);
+        intent.putExtra(GlobalConstants.DAY, sDay);
+        intent.putExtra(GlobalConstants.TIME, sTime);
         startActivity(intent);
     }
 

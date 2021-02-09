@@ -38,11 +38,13 @@ public class InternalStorage extends AppCompatActivity {
         binding.newMemoButton.setOnClickListener(View -> {
 
             try {
+
                 FileOutputStream file = openFileOutput(FILE_NAME, MODE_APPEND);
                 PrintWriter pw = new PrintWriter(file);
                 pw.println(binding.etMemo.getText().toString());
                 pw.close();
                 file.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -52,7 +54,9 @@ public class InternalStorage extends AppCompatActivity {
 
         });
 
-        binding.previousMemoButton.setOnClickListener(View -> showMemo());
+        binding.previousMemoButton.setOnClickListener(View ->
+                showMemo()
+        );
 
     }
 

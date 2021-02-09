@@ -1,10 +1,10 @@
 package com.datum.android.sharedpreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,20 +13,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         // read
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences spx = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
-
-        // mode private == no body can access from outside the application
-        SharedPreferences sp_specific_name = getSharedPreferences("names", MODE_PRIVATE);
-
         // edit
-        SharedPreferences.Editor editor = sp.edit();
-
-        editor.putString("name", "Bassam");
+        SharedPreferences.Editor editor = spx.edit();
+        editor.putString("name", "bassam");
         editor.apply();
 
-        sp.getString("name", "No name");
+        // mode private == no body can access from outside the application
+//        SharedPreferences sp_specific_name = getSharedPreferences("myown_sp", MODE_PRIVATE);
+
+
+        // how to get the data
+        spx.getString("name", "No name");
+
+
+
 
 
     }

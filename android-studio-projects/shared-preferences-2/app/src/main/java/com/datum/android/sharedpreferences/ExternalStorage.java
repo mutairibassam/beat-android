@@ -81,7 +81,6 @@ public class ExternalStorage extends AppCompatActivity {
         File file = new File(root + "/" + fileName);
         file.delete();
 
-
     }
 
     private void getPermission() {
@@ -146,12 +145,13 @@ public class ExternalStorage extends AppCompatActivity {
                 file.createNewFile();
                 Toast.makeText(this, "A new file with name " + fileName + " has been created successfully", Toast.LENGTH_SHORT).show();
                 binding.etMemo.setText("");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             // make a new mkdir == in case you want nested directories
-            // file.mkdir();
+//             file.mkdir();
         }
 
     }

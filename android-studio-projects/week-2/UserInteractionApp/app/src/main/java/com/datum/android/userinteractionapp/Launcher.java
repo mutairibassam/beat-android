@@ -105,6 +105,7 @@ public class Launcher extends AppCompatActivity implements CompoundButton.OnChec
     public void navigate() {
 
         Intent intent = new Intent(this, MainActivity.class);
+
         Bundle bundle = new Bundle();
         bundle.putBoolean(GlobalConstants.GUEST, isGuest);
         intent.putExtras(bundle);

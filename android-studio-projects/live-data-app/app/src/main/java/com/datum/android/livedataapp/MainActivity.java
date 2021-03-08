@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.datum.android.livedataapp.databinding.ActivityMainBinding;
@@ -41,11 +42,13 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getRandom().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String it) {
+                Log.d("TAG", "onChanged: ");
                 binding.number.setText(it);
             }
         });
 
         binding.generate.setOnClickListener(View -> {
+            Log.d("TAG", "viewModel.generateRandomNumber: ");
             viewModel.generateRandomNumber();
         });
 

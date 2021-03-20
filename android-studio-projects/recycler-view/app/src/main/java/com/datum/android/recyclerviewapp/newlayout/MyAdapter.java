@@ -1,6 +1,8 @@
 package com.datum.android.recyclerviewapp.newlayout;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +19,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyNewViewHolder> {
 
     List<Model> myList;
 
-    public MyAdapter(List<Model> myList) {
+    public MyAdapter(List<Model> myList, Context mContext) {
         this.myList = myList;
+        this.mContext = mContext;
     }
+
+    Context mContext;
+
+//    public MyAdapter(List<Model> myList) {
+//        this.myList = myList;
+//    }
 
     @NonNull
     @Override
@@ -36,6 +45,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyNewViewHolder> {
 
         holder.name.setText(myList.get(pos).getName());
         holder.email.setText(myList.get(pos).getEmail());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("TAG", "onClick: " + pos);
+                Intent myIntent = new Intent(mContext, newSecondActivity.class);
+                myIntent.putExtra("item", myList.get(pos).getName());
+                mContext.startActivity(myIntent);
+            }
+        });
     }
 
     @Override

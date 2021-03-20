@@ -17,16 +17,13 @@ public abstract class TodoDatabase extends RoomDatabase {
     //at the same time, which would be a bad thing
     private static TodoDatabase INSTANCE;
 
-    public static TodoDatabase getDatabase(Context context) {
-
+    // singlton: to make sure there is no more than one copy
+    // @synchronized one thread only can deal with this database
+    public static synchronized TodoDatabase getInstance(Context context) {
         if(INSTANCE == null) {
-            synchronized (TodoDatabase.class) {
-                if(INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    TodoDatabase.class, "todo_database")
-                                    .build();
-                }
-            }
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                    TodoDatabase.class, "todo_database")
+                    .build();
         }
 
         return INSTANCE;

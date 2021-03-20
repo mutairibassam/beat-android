@@ -1,0 +1,48 @@
+
+
+
+
+- list of issues if you click an issue it will take you to another activity which has more details
+
+- Dummy data, From the internet, Database -> realtime, locally
+
+
+
+Activity A                      Activity B
+Issue                               details -> Single item (no need for a list)
+
+List
+Recyclerview        -->     Adapter
+
+Model (myList)
+IssueList
+
+
+Project Scope
+#########################################################
+
+
+Function scope
+
+user input ---> insert ---> update layout
+
+user action (delete) ---> delete ---> update layout
+
+user action (login) ---> validate user cred. === valid ---> Main Activity
+                                             !== valid === cred. is wrong ---> please try again
+                                                       === don't have account ---> please register
+
+
+
+##########################################################
+Task
+
+login functionality
+    - user cannot reset his password
+
+Change password functionality
+    - allow the user to change his password
+
+
+Add
+

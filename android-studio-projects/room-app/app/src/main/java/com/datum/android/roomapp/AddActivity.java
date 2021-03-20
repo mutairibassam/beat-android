@@ -3,6 +3,10 @@ package com.datum.android.roomapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +19,8 @@ import android.widget.Toast;
 
 public class AddActivity extends AppCompatActivity {
 
+    WorkManager workManager;
+    WorkRequest workRequest;
 
     EditText word, meaning, type;
 
@@ -92,6 +98,10 @@ public class AddActivity extends AppCompatActivity {
             mViewModel.update(wordObject);
         } else {
             mViewModel.insert(wordObject);
+
+
+//            workManager = WorkManager.getInstance(this);
+//            workManager.enqueue(workRequest);
         }
 
         finish();

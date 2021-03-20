@@ -28,7 +28,7 @@ public class NewMainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview2);
 
-        mycustomAdapter = new MyAdapter(myList);
+        mycustomAdapter = new MyAdapter(myList, NewMainActivity.this);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

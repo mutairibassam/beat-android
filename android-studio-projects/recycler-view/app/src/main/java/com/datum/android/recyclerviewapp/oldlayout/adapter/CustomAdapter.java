@@ -1,6 +1,7 @@
 package com.datum.android.recyclerviewapp.oldlayout.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
             name = itemView.findViewById(R.id.name);
             email = itemView.findViewById(R.id.email);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("TAG", "onClick: " + getAdapterPosition());
+                }
+            });
 
         }
     }

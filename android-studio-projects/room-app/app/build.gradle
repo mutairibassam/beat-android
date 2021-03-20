@@ -51,4 +51,9 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$live_data_version"
     // Test helpers for LiveData
     testImplementation "android.arch.core:core-testing:$live_data_version"
+
+    def work_version = "2.5.0"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
 }

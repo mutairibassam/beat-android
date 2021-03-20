@@ -11,8 +11,10 @@
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
-            android:id="@+id/action_list_to_editFragment"
-            app:destination="@id/editFragment" />
+            android:id="@+id/navigateToEditFragment"
+            app:destination="@id/editFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
 
@@ -22,7 +24,9 @@
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit" >
         <action
-            android:id="@+id/action_editFragment_to_list"
-            app:destination="@id/list" />
+            android:id="@+id/navigateToListFragment"
+            app:destination="@id/list"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left" />
     </fragment>
 </navigation>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">Localization</string>
+
+    <string name="language">Welcome</string>
+    <string-array name="lang">
+        <item>en</item>
+        <item>ar</item>
+        <item>es</item>
+    </string-array>
+    <string name="thanks">Thanks</string>
+</resources>

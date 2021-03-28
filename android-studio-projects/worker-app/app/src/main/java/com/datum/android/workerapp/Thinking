@@ -1,0 +1,39 @@
+
+
+
+
+
+
+
+1- allow the user to specify the time.
+
+2- the application should send notification on the same time that specified by the user.
+
+
+Background process
+
+1- On specific time
+    api 23+             ----> JobSchedular ( Based on connectivity )
+    api 22-             ----> Alarm Manager ( Waking up device )+ Broadcast receiver ( transit data )
+
+    Work manager
+
+    Worker ( class )
+    doWork() ===> background process
+        input
+        output
+        constrants (
+        enque()
+
+
+    Rx-java work-manager
+
+    chain
+
+    upload image ---> (compress ) --> database
+
+    beginWith(compress).then(upload).enqueue()
+
+
+
+2- On not specific time     ----> Rx-Java, ThreadPool

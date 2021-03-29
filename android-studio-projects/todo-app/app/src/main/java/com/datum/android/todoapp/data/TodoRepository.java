@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.work.Worker;
 
+import com.datum.android.todoapp.AppExecutor;
+
 import java.util.List;
 
 public class TodoRepository {
@@ -14,16 +16,10 @@ public class TodoRepository {
     private LiveData<List<TodoTable>> getAllTasks;
 
     public void addTask(TodoTable todoTable) {
-        Thread myThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                todoDao.addTask(todoTable);
-            }
 
+        AppExecutor.getInstance().getNetworkIO().execute(() -> {
+            todoDao.addTask(todoTable);
         });
-
-        myThread.start();
-
     }
 
     public LiveData<List<TodoTable>> getAllTasks() {

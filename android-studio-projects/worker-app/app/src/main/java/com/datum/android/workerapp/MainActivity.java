@@ -1,13 +1,10 @@
 package com.datum.android.workerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkContinuation;
+import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
-import androidx.work.Worker;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    // Define the parameter keys:
+    public static final String KEY_X_ARG = "X";
+    public static final String KEY_Y_ARG = "Y";
+    public static final String KEY_Z_ARG = "Z";
+    // ...and the result key:
+    public static final String KEY_RESULT = "result";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,68 +30,63 @@ public class MainActivity extends AppCompatActivity {
 
 
         MainActivityViewModel viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        TextView textView = findViewById(R.id.textView_two);
-        Button imageOne = findViewById(R.id.image_one);
+        Button uploadBtn = findViewById(R.id.btn_upload);
 
-        imageOne.setOnClickListener(View -> {
+        uploadBtn.setOnClickListener(View -> {
             // trigger an event
             Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
 
+
+            OneTimeWorkRequest compress = viewModel.compressImage();
+            OneTimeWorkRequest upload = viewModel.uploadImage();
+
             WorkManager.getInstance(this)
                     .beginWith(
-                            viewModel.compressImage()
+                            compress
                     )
                     .then(
-                            viewModel.uploadImage()
-                    ).enqueue();
+                            upload
+                    )
+                    .enqueue();
 
-//            viewModel.counter();
+            WorkManager.getInstance(this).getWorkInfoByIdLiveData(compress.getId())
+                    .observe(this, info -> {
 
-            // update UI
-//            viewModel.getCounter().observe(this, new Observer<String>() {
-//                @Override
-//                public void onChanged(String s) {
-//                    Log.d(TAG, "onChanged() called with: s = [" + s + "]");
-//                    textView.setText(s);
-//                }
-//            });
-        });
+                        // to get the output -> int res = info.getOutputData().getInt(KEY_RESULT, 0);
+                        TextView textView = findViewById(R.id.tv_compress);
+                        textView.setText(info.getState().toString());
 
-        Button imageTwo = findViewById(R.id.image_two);
-        imageTwo.setOnClickListener(View -> {
-            // trigger an event
-            viewModel.counter();
+                    });
 
-            // update UI
-            viewModel.getCounter().observe(this, new Observer<String>() {
-                @Override
-                public void onChanged(String s) {
-                    textView.setText(s);
-                }
-            });
+            WorkManager.getInstance(this).getWorkInfoByIdLiveData(upload.getId())
+                    .observe(this, workInfo -> {
 
+                        TextView textView = findViewById(R.id.tv_upload);
+                        textView.setText(workInfo.getState().toString());
+                    });
 
         });
 
-        Button imageThree = findViewById(R.id.image_three);
-        imageThree.setOnClickListener(View -> {
-            // trigger an event
+        Button downloadBtn = findViewById(R.id.btn_download);
+        downloadBtn.setOnClickListener(View -> {
 
-            // update UI
+            PeriodicWorkRequest download = viewModel.downloadImage();
+            WorkManager.getInstance(this).enqueue(download);
 
-
+//            /**
+//             * There is no output for Periodic work manager request, since the worker will reuse the same ID for each run
+//             *
+//             */
+//
+//            WorkManager.getInstance(this).getWorkInfoByIdLiveData(download.getId())
+//                    .observe(this, workInfo -> {
+//                        TextView textView = findViewById(R.id.tv_download);
+//
+//                        Log.d(TAG, "onCreate: " + workInfo.getOutputData().getString("result"));
+//                        textView.setText(workInfo.getOutputData().getString("result"));
+//                    });
         });
 
-        Button imageFour = findViewById(R.id.image_four);
-        imageFour.setOnClickListener(View -> {
-            // trigger an event
-
-            // update UI
-
-
-        });
 
     }
-
-
 }

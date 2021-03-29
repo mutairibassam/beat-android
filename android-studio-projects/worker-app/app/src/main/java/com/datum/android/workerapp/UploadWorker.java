@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -22,7 +23,7 @@ public class UploadWorker extends Worker {
 
         Log.d(TAG, "doWork() Upload worker called");
 
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 3; i++) {
             try {
                 Thread.sleep(1000);
                 Log.d(TAG, "download: " + i);

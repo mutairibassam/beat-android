@@ -29,5 +29,11 @@ public class TaskRepository {
         return taskDao.getAllTasks();
     }
 
+    public void delete(TaskTable taskTable) {
+        AppExecutor.getInstance().getNetworkIO().execute( () -> {
+            taskDao.delete(taskTable);
+        });
+    }
+
 
 }

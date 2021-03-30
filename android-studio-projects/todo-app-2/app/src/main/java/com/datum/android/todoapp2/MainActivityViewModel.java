@@ -24,4 +24,8 @@ public class MainActivityViewModel extends AndroidViewModel {
         return taskRepository.getAllTasks();
     }
 
+    public void delete(TaskTable taskTable) {
+        taskRepository.delete(taskTable);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.datum.android.todoapp2.taskbatabase;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -16,4 +17,7 @@ public interface TaskDao {
 
     @Query("SELECT * FROM task_table")
     LiveData<List<TaskTable>> getAllTasks();
+
+    @Delete
+    void delete(TaskTable taskTable);
 }

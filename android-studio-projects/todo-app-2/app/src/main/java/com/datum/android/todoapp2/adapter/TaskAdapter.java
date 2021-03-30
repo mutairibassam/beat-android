@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.datum.android.todoapp2.R;
 import com.datum.android.todoapp2.taskbatabase.TaskTable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterViewHolder> {
@@ -46,7 +47,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
         return taskTableList.size();
     }
 
-    public static class TaskAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class TaskAdapterViewHolder extends RecyclerView.ViewHolder {
 
         TextView taskTitle;
 
@@ -54,11 +55,26 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
             super(itemView);
 
             taskTitle = itemView.findViewById(R.id.task_title);
+
+            itemView.setOnClickListener(View -> {
+                int index = getAdapterPosition();
+                mListener.onItemClick(taskTableList.get(index));
+            });
         }
 
         void bind(TaskTable taskTable) {
             taskTitle.setText(taskTable.getTask());
-
         }
+
+    }
+
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(TaskTable taskTable);
+    }
+
+    public TaskTable getTaskAt(int pos) {
+        return taskTableList.get(pos);
     }
 }

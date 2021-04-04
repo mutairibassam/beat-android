@@ -22,19 +22,17 @@ import retrofit2.Response;
 public class MainActivityViewModel extends AndroidViewModel {
 
     IssueRepository issueRepository;
-//    NetworkRepository networkRepository;
     private MutableLiveData<List<Post>> postList;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         issueRepository = new IssueRepository(application);
         postList = new MutableLiveData<>();
-//        networkRepository = new NetworkRepository(application);
     }
 
-    public LiveData<List<Issue>> getAllTasks() {
-        return issueRepository.getAllIssues();
-    }
+//    public LiveData<List<Issue>> getAllTasks() {
+//        return issueRepository.getAllIssues();
+//    }
 
     public MutableLiveData<List<Post>> getPosts() {
         return postList;

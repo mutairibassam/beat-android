@@ -1,5 +1,6 @@
 package com.datum.android.pagingapp.data;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -17,8 +18,16 @@ public class Issue {
         return number;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @PrimaryKey(autoGenerate = true)
-    int id;
+    private int id;
 
     @ColumnInfo
     private String number;
@@ -39,5 +48,10 @@ public class Issue {
         }
 
         return reporter;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return super.equals(obj);
     }
 }

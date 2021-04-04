@@ -1,6 +1,7 @@
 package com.datum.android.pagingapp.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 import androidx.room.Dao;
 import androidx.room.Query;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Dao
 public interface IssueDao {
 
-    @Query("SELECT * FROM issue_table")
-    LiveData<List<Issue>> getAllIssues();
+//    @Query("SELECT * FROM issue_table")
+//    LiveData<List<Issue>> getAllIssues();
 
 }

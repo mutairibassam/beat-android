@@ -2,6 +2,7 @@ package com.datum.android.pagingapp.data;
 
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.Expose;
@@ -111,4 +112,12 @@ public class Post implements Parcelable {
         return 0;
     }
 
+    /**
+     *      required to override the equal method in PostsListPagedAdapter
+     *
+     */
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return super.equals(obj);
+    }
 }

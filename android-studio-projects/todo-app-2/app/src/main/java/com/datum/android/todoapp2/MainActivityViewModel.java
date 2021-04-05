@@ -32,4 +32,12 @@ public class MainActivityViewModel extends AndroidViewModel {
         return taskRepository.getSearchTasks(searchTask);
     }
 
+    public List<TaskTable> getFavTask() {
+        return taskRepository.getFavTasks();
+    }
+
+    public void insertTask(TaskTable taskTable) {
+        taskRepository.insertTask(taskTable);
+    }
+
 }

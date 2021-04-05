@@ -39,5 +39,9 @@ public class TaskRepository {
         return taskDao.getSearchTask(searchTask);
     }
 
+    public List<TaskTable> getFavTasks() {
+        return taskDao.getFavTask();
+    }
+
 
 }

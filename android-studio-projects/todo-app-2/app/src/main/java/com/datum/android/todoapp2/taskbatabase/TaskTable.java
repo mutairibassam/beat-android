@@ -7,15 +7,19 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "task_table")
 public class TaskTable {
 
-    public TaskTable(String task) {
-        this.task = task;
-    }
-
     @PrimaryKey(autoGenerate = true)
     int id;
 
     @ColumnInfo(name = "task")
     String task;
+
+    @ColumnInfo(name = "important")
+    boolean important;
+
+    public TaskTable(String task, boolean important) {
+        this.task = task;
+        this.important = important;
+    }
 
     public int getId() {
         return id;
@@ -31,5 +35,13 @@ public class TaskTable {
 
     public void setTask(String task) {
         this.task = task;
+    }
+
+    public boolean isImportant() {
+        return important;
+    }
+
+    public void setIsImportant(boolean important) {
+        this.important = important;
     }
 }

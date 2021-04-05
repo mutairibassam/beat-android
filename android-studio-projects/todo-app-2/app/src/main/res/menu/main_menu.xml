@@ -8,4 +8,8 @@
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/sort"
+        android:title="@string/favourite" />
 </menu>

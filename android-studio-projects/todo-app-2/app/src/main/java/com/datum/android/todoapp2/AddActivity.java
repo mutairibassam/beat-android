@@ -1,7 +1,7 @@
 package com.datum.android.todoapp2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ public class AddActivity extends AppCompatActivity {
 
     private ActivityAddBinding binding;
     private AddActivityViewModel viewModel;
+
+    boolean isSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +26,19 @@ public class AddActivity extends AppCompatActivity {
 
         binding.addButton.setOnClickListener(View -> {
             String userInput = binding.etTask.getText().toString();
-            TaskTable newTask = new TaskTable(userInput);
+            TaskTable newTask = new TaskTable(userInput, isSelected);
             viewModel.insertTask(newTask);
             finish();
+        });
+
+        binding.favButton.setOnClickListener(View -> {
+            if(!isSelected) {
+                binding.favButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_selected));
+                isSelected = true;
+            } else {
+                binding.favButton.setBackground(ContextCompat.getDrawable(this, R.drawable.ic_favorite_unselected));
+                isSelected = false;
+            }
         });
 
     }

@@ -20,4 +20,8 @@ public interface TaskDao {
 
     @Delete
     void delete(TaskTable taskTable);
+
+    @Query("SELECT * FROM task_table WHERE task LIKE :searchTask")
+    LiveData<List<TaskTable>> getSearchTask(String searchTask);
+
 }

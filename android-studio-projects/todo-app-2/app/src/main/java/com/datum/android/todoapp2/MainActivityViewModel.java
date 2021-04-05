@@ -28,4 +28,8 @@ public class MainActivityViewModel extends AndroidViewModel {
         taskRepository.delete(taskTable);
     }
 
+    public LiveData<List<TaskTable>> getSearchTask(String searchTask) {
+        return taskRepository.getSearchTasks(searchTask);
+    }
+
 }

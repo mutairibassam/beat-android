@@ -35,5 +35,9 @@ public class TaskRepository {
         });
     }
 
+    public LiveData<List<TaskTable>> getSearchTasks(String searchTask) {
+        return taskDao.getSearchTask(searchTask);
+    }
+
 
 }

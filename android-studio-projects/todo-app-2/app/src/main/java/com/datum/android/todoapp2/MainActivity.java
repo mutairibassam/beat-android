@@ -2,6 +2,7 @@ package com.datum.android.todoapp2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
@@ -10,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 
 import com.datum.android.todoapp2.adapter.TaskAdapter;
 import com.datum.android.todoapp2.databinding.ActivityMainBinding;
@@ -27,10 +30,22 @@ public class MainActivity extends AppCompatActivity {
     private List<TaskTable> taskTableList = new ArrayList<>();
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        View view = findViewById(R.id.main_toolbar);
+        ((Toolbar) view).setTitle("To-Do List");
+        setSupportActionBar((Toolbar) view);
 
         viewModel = new MainActivityViewModel(getApplication());
         binding.floatBtn.setOnClickListener(View -> {
@@ -61,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 viewModel.delete(taskAdapter.getTaskAt(pos));
             }
         }).attachToRecyclerView(recyclerView);
-
 
     }
 

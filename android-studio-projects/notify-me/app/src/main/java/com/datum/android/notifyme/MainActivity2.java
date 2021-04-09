@@ -4,23 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.RemoteInput;
-import androidx.core.content.ContextCompat;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
-
-import java.util.concurrent.Executor;
-
-import static androidx.core.app.NotificationCompat.Action.SEMANTIC_ACTION_REPLY;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -41,26 +33,38 @@ public class MainActivity2 extends AppCompatActivity {
 
         notify.setOnClickListener(View -> {
 
-            Thread thread = new Thread(new Runnable() {
+//            Thread thread = new Thread(new Runnable() {
+//
+//                @Override
+//                public void run() {
+//                    try {
+//
+//                        Thread.sleep(5000);
+//                        testFunciton();
+//
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//            thread.start();
 
-                @Override
-                public void run() {
-                    try {
+            // sleep for 5 seconds
+            AppExecutor.getInstance().getMainThread().execute(() -> {
+                        try {
+                            Thread.sleep(5000);
+                            notificationDifferentUsecasesTests();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
-                        Thread.sleep(5000);
-                        testFunciton();
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            thread.start();
+            }
+            );
 
         });
     }
 
-    public void testFunciton() {
+    public void notificationDifferentUsecasesTests() {
 
 
         // -------------------- just a navigation ----------------- //
@@ -103,6 +107,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         // ---------------------------------------------------------------------- //
 
+        // create notification is a must for api 26+
         createNotificationChannel();
 
 
@@ -126,6 +131,7 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void createNotificationChannel() {
+
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -135,17 +141,12 @@ public class MainActivity2 extends AppCompatActivity {
 
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
+
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
-    }
-
-    public void mainMethod() {
-        AppExecutor.getInstance().getMainThread().execute(() -> {
-
-        });
     }
 
 }

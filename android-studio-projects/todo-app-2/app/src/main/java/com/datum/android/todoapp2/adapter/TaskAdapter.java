@@ -19,14 +19,23 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
 
     List<TaskTable> taskTableList;
 
+    /**
+     *      @TODO -> Follow the todo to know how to create a new listener in the Adapter
+     *
+     */
+
+    // TODO 3: declare a new instance
     private OnItemFavListener mListener;
 
+    // TODO 4: pass the instance in the constructor
     public TaskAdapter(List<TaskTable> taskTableList, OnItemFavListener mListener) {
         this.taskTableList = taskTableList;
         this.mListener = mListener;
     }
 
+    // TODO 1: create a new Interface
     public interface OnItemFavListener {
+        // TODO 2: create a new function that take the object as argument
         void onFavClick(TaskTable taskTable);
     }
 
@@ -42,6 +51,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.task_item, parent, false);
 
+        // TODO 5: pass the instance in the ViewHolder
         return new TaskAdapterViewHolder(view, mListener);
     }
 
@@ -59,8 +69,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
 
         TextView taskTitle;
         Button btn_fav;
+
+        // TODO 6: create a new instance of the same interface
         OnItemFavListener mListener;
 
+        // TODO 7: pass the instance in the ViewHolder constructor
         public TaskAdapterViewHolder(@NonNull View itemView, OnItemFavListener mListener) {
             super(itemView);
 
@@ -98,9 +111,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
                     taskTable.setIsImportant(false);
                 }
 
+                // TODO 8: trigger the click event
                 mListener.onFavClick(taskTable);
             });
         }
+
     }
 
     public TaskTable getTaskAt(int pos) {

@@ -48,17 +48,14 @@ public class MainActivity extends AppCompatActivity {
         mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
 
         // onChange callback will be called if there is any changes
-        mWordViewModel.getAllWords().observe(this, new Observer<List<Words>>() {
-            @Override
-            public void onChanged(List<Words> words) {
-                // Update UI
-                // RecyclerView
+        mWordViewModel.getAllWords().observe(this, words -> {
+            // Update UI
+            // RecyclerView
 
-                // bring the new words that come from Room
-                mWordAdapter.setWords(words);
+            // bring the new words that come from Room
+            mWordAdapter.setWords(words);
 
 
-            }
         });
 
         mWordAdapter.OnItemClickListener(new WordAdapter.OnItemClickListener() {

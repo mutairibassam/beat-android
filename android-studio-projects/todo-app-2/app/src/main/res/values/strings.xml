@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TodoApp2</string>
+    <string name="add_task">Add task</string>
+    <string name="add">Add</string>
+    <string name="search">Search</string>
+    <string name="favourite">Favourite</string>
+</resources>

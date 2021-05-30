@@ -57,9 +57,6 @@ dependencies {
 
     testImplementation "com.google.truth:truth:1.1.2"
 
-
-
-
     // Google
     // Testing-only dependencies
     androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion

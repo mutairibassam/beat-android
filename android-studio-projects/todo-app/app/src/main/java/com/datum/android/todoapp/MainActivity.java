@@ -28,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Example to run the database on the main thread
-//        TodoDatabase db = TodoDatabase.getInstance(this);
-//        db.todoDao().addTask(new TodoTable("Bassam"));
+        TodoDatabase db = TodoDatabase.getInstance(this);
+        db.todoDao().addTask(new TodoTable("Bassam"));
 
 
-//        binding.add.setOnClickListener(View -> {
-//            TodoTable todoTable = new TodoTable("my first task");
-//            viewModel.insert(todoTable);
-//
-//        });
+        binding.add.setOnClickListener(View -> {
+            TodoTable todoTable = new TodoTable("my first task");
+            viewModel.insert(todoTable);
+
+        });
 
     }
 }

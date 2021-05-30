@@ -18,7 +18,6 @@ public class PostDataSource extends PageKeyedDataSource<Integer, Post> {
 
     private static final String TAG = PostDataSource.class.getSimpleName();
 
-
     public static final int FIRST_PAGE = 1;
 
     @Override

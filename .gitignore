@@ -20,6 +20,12 @@ adobe-xd-design/
 # Remove my own slides 
 slides/
 
+# remove assets
+assets/
+powerpoints/
+References/
+slides/
+
 # Remove my own videos
 videos/
 *.mov
